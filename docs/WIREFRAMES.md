@@ -1,11 +1,11 @@
 # Wireframes — Sigma Marketplace
 
-**Version:** 1.0  
+**Version:** 1.1  
 **Date:** 2026-05-19
 
 ---
 
-## Mobile App (Technician)
+## Mobile App (Worker — belongs to Vendor)
 
 ---
 
@@ -47,17 +47,17 @@
 │                             │
 │  ┌───────────────────────┐  │
 │  │ 🟡 IN PROGRESS        │  │
-│  │ Site: Telkom Margonda │  │
-│  │ SOP: LAN Installation │  │
-│  │ 4/9 steps · Rp 85,000 │  │
+│  │ Telkom Margonda       │  │
+│  │ LAN Installation      │  │
+│  │ 4 / 9 steps done      │  │
 │  │ Scheduled: 09:00      │  │
 │  └───────────────────────┘  │
 │                             │
 │  ┌───────────────────────┐  │
 │  │ 🔵 ASSIGNED           │  │
-│  │ Site: Tower Ciputat   │  │
-│  │ SOP: Cable Inspection │  │
-│  │ 0/6 steps · Rp 60,000 │  │
+│  │ Tower Ciputat         │  │
+│  │ Cable Inspection      │  │
+│  │ 0 / 6 steps done      │  │
 │  │ Scheduled: 14:00      │  │
 │  └───────────────────────┘  │
 │                             │
@@ -65,9 +65,9 @@
 │                             │
 │  ┌───────────────────────┐  │
 │  │ 🔵 ASSIGNED           │  │
-│  │ Site: BTS Depok Timur │  │
-│  │ SOP: Site Survey      │  │
-│  │ 0/12 steps · Rp 120k  │  │
+│  │ BTS Depok Timur       │  │
+│  │ Site Survey           │  │
+│  │ 0 / 12 steps done     │  │
 │  │ Scheduled: 08:00      │  │
 │  └───────────────────────┘  │
 │                             │
@@ -77,8 +77,8 @@
 │  └───────────────────────┘  │
 │                             │
 ├──────┬──────┬──────┬────────┤
-│ Jobs │      │Earn  │Profile │
-│  🏠  │      │  💰  │  👤    │
+│ Jobs │      │History│Profile│
+│  🏠  │      │  📋   │  👤   │
 └──────┴──────┴──────┴────────┘
 ```
 
@@ -92,46 +92,45 @@
 ├─────────────────────────────┤
 │                             │
 │  Telkom Margonda            │
-│  LAN Installation SOP       │
+│  LAN Installation           │
 │                             │
 │  📍 Jl. Margonda Raya No.5  │
 │  🗓  Mon, 19 May 2026       │
 │  ⏰  09:00 – Est. 12:00     │
-│  👤  Assigned by: Rina W.   │
+│  🏢  Client: PT. Telkom     │
 │                             │
 │  ┌───────────────────────┐  │
-│  │ Rp 85,000 total pay   │  │
 │  │ ████████░░░░ 4/9 done │  │
 │  └───────────────────────┘  │
 │                             │
 │  SOP STEPS                  │
 │                             │
 │  ✅ 1. Site arrival check-in│
-│        Rp 5,000  ✓ Done    │
+│        ✓ Done               │
 │                             │
 │  ✅ 2. Equipment unboxing   │
-│        Rp 5,000  ✓ Done    │
+│        ✓ Done               │
 │                             │
 │  ✅ 3. Cable route survey   │
-│        Rp 10,000 ✓ Done    │
+│        ✓ Done               │
 │                             │
 │  ✅ 4. Patch panel install  │
-│        Rp 15,000 ✓ Done    │
+│        ✓ Done               │
 │                             │
 │  ▶ 5. Switch rack mount     │ ← current
-│       Rp 15,000  Tap to do │
+│       Tap to start          │
 │                             │
 │  ○ 6. Cable termination     │
-│       Rp 15,000  Locked    │
+│       Locked                │
 │                             │
 │  ○ 7. Cable labeling        │
-│       Rp 10,000  Locked    │
+│       Locked                │
 │                             │
 │  ○ 8. Network testing       │
-│       Rp 10,000  Locked    │
+│       Locked                │
 │                             │
 │  ○ 9. Site sign-off         │
-│       Rp 0 (required)       │
+│       Required              │
 │                             │
 └─────────────────────────────┘
 ```
@@ -146,7 +145,7 @@
 ├─────────────────────────────┤
 │                             │
 │  Switch Rack Mount          │
-│  Rp 15,000                  │
+│  Step 5 of 9                │
 │                             │
 │  INSTRUCTIONS               │
 │  ┌───────────────────────┐  │
@@ -182,132 +181,118 @@
 
 ---
 
-### Screen 5: Earnings
+### Screen 5: Job History
 
 ```
 ┌─────────────────────────────┐
-│ ≡  Earnings             👤  │
+│ ≡  Job History          👤  │
 ├─────────────────────────────┤
 │                             │
 │  May 2026                   │
 │  ┌───────────────────────┐  │
-│  │ Total Earned          │  │
-│  │ Rp 1,245,000          │  │
-│  │                       │  │
-│  │ ████████████████░░░░  │  │
-│  │ 18 of 22 working days  │  │
+│  │ 18 jobs completed     │  │
+│  │ 342 steps done        │  │
 │  └───────────────────────┘  │
 │                             │
-│  This Week                  │
 │  ┌───────────────────────┐  │
-│  │ Rp 315,000            │  │
-│  │ 4 jobs · 31 steps     │  │
-│  └───────────────────────┘  │
-│                             │
-│  JOB BREAKDOWN              │
-│                             │
-│  ┌───────────────────────┐  │
-│  │ Telkom Margonda       │  │
+│  │ ✅ Telkom Margonda    │  │
+│  │ LAN Installation      │  │
 │  │ 19 May · 9/9 steps    │  │
-│  │               Rp 85k  │  │
 │  └───────────────────────┘  │
 │                             │
 │  ┌───────────────────────┐  │
-│  │ Tower Ciputat         │  │
+│  │ ✅ Tower Ciputat      │  │
+│  │ Cable Inspection      │  │
 │  │ 19 May · 6/6 steps    │  │
-│  │               Rp 60k  │  │
 │  └───────────────────────┘  │
 │                             │
 │  ┌───────────────────────┐  │
-│  │ BTS Depok Timur       │  │
+│  │ ✅ BTS Depok Timur    │  │
+│  │ Site Survey           │  │
 │  │ 18 May · 12/12 steps  │  │
-│  │              Rp 120k  │  │
 │  └───────────────────────┘  │
 │                             │
 ├──────┬──────┬──────┬────────┤
-│ Jobs │      │Earn  │Profile │
-│  🏠  │      │  💰  │  👤    │
+│ Jobs │      │History│Profile│
+│  🏠  │      │  📋   │  👤   │
 └──────┴──────┴──────┴────────┘
 ```
 
 ---
 
-## Web Dashboard (Client Admin)
+## Web Dashboard — Client Admin
 
 ---
 
-### Screen 6: Dashboard Overview
+### Screen 6: Client Dashboard Overview
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│  SIGMA  │  Dashboard  Jobs  Technicians  SOPs  Payouts               │
-│         │                                              Rina W. ▾     │
+│  SIGMA  │  Dashboard  Jobs  Vendors  SOPs                            │
+│         │                                         PT. Telkom · Rina ▾│
 ├─────────┴────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  Good morning, Rina!  Monday, 19 May 2026                           │
 │                                                                      │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌─────────┐ │
-│  │ Active Jobs  │  │ Technicians  │  │Tasks Done    │  │ Payout  │ │
-│  │              │  │    Today     │  │  Today       │  │ This Mo │ │
-│  │     12       │  │    8 / 14   │  │   47 / 63    │  │ Rp 4.2M │ │
-│  │  ↑ 3 new     │  │  on-site    │  │   74%        │  │         │ │
+│  │ Active Jobs  │  │ Workers  │  │ Steps Done   │  │Pending  │ │
+│  │              │  │  On-site     │  │   Today      │  │Payouts  │ │
+│  │     12       │  │     8        │  │  47 / 63     │  │   9     │ │
+│  │  ↑ 3 new     │  │              │  │   74%        │  │         │ │
 │  └──────────────┘  └──────────────┘  └──────────────┘  └─────────┘ │
 │                                                                      │
 │  LIVE JOB MAP                          ACTIVE JOBS                  │
 │  ┌─────────────────────────────┐  ┌──────────────────────────────┐  │
-│  │                             │  │  Site              Tech  Prog │  │
+│  │                             │  │  Site         Vendor   Prog  │  │
 │  │   🗺  [Map placeholder]     │  │  ──────────────────────────── │  │
-│  │      📍 📍   📍            │  │  Telkom Margonda   Budi  4/9  │  │
-│  │         📍       📍        │  │  Tower Ciputat     Andi  0/6  │  │
-│  │                             │  │  BTS Depok         Reza  12/12│  │
-│  │                             │  │  Site Bogor        Hadi  2/8  │  │
+│  │      📍 📍   📍            │  │  Telkom Marg  Sigma T  4/9   │  │
+│  │         📍       📍        │  │  Tower Ciput  Sigma T  0/6   │  │
+│  │                             │  │  BTS Depok    NetPro   12/12 │  │
 │  └─────────────────────────────┘  └──────────────────────────────┘  │
 │                                                                      │
 │  RECENT ACTIVITY                                                     │
 │  ┌────────────────────────────────────────────────────────────────┐ │
-│  │ 10:42  Budi completed step "Patch panel install" — Telkom      │ │
-│  │ 10:31  Reza completed job — BTS Depok Timur ✅                 │ │
-│  │ 09:15  Andi checked in — Tower Ciputat                         │ │
-│  │ 09:00  3 new jobs dispatched for today                         │ │
+│  │ 10:42  Budi (Sigma Teknik) completed step 4 — Telkom Margonda  │ │
+│  │ 10:31  Reza (NetPro) completed job — BTS Depok Timur ✅        │ │
+│  │ 09:15  Andi (Sigma Teknik) checked in — Tower Ciputat          │ │
 │  └────────────────────────────────────────────────────────────────┘ │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### Screen 7: Job Orders List
+### Screen 7: Job Orders List (Client)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│  SIGMA  │  Dashboard  Jobs  Technicians  SOPs  Payouts               │
+│  SIGMA  │  Dashboard  Jobs  Vendors  SOPs                            │
 ├─────────┴────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  Job Orders                                    [+ New Job Order]     │
 │                                                                      │
-│  Filters: Status ▾  Technician ▾  Date Range ▾  SOP ▾   [Search]   │
+│  Status ▾  Vendor ▾  Service Category ▾  Date Range ▾  [Search]    │
 │                                                                      │
-│  ┌────┬─────────────────┬──────────┬──────────┬────────┬──────────┐ │
-│  │ #  │ Site            │Technician│ SOP      │ Status │ Payout   │ │
-│  ├────┼─────────────────┼──────────┼──────────┼────────┼──────────┤ │
-│  │ 83 │ Telkom Margonda │ Budi S.  │ LAN Inst │🟡 4/9  │ Rp 85k   │ │
-│  │ 82 │ Tower Ciputat   │ Andi R.  │ Cable Ins│🔵 0/6  │ Rp 60k   │ │
-│  │ 81 │ BTS Depok Timur │ Reza M.  │ Survey   │✅ Done │ Rp 120k  │ │
-│  │ 80 │ Site Bogor      │ Hadi P.  │ LAN Inst │🟡 2/8  │ Rp 80k   │ │
-│  │ 79 │ Gedung Plaza    │ Fajar K. │ Fiber OFC│✅ Done │ Rp 200k  │ │
-│  │ 78 │ RS Fatmawati    │ Budi S.  │ LAN Inst │✅ Done │ Rp 85k   │ │
-│  └────┴─────────────────┴──────────┴──────────┴────────┴──────────┘ │
+│  ┌────┬─────────────────┬──────────────┬──────────────┬───────────┐ │
+│  │ #  │ Site            │ Vendor · Tech│ Category     │ Status    │ │
+│  ├────┼─────────────────┼──────────────┼──────────────┼───────────┤ │
+│  │ 83 │ Telkom Margonda │Sigma T · Budi│ LAN Install  │🟡 4/9     │ │
+│  │ 82 │ Tower Ciputat   │Sigma T · Andi│ Cable Insp   │🔵 0/6     │ │
+│  │ 81 │ BTS Depok Timur │NetPro · Reza │ Site Survey  │✅ Done    │ │
+│  │ 80 │ Site Bogor      │Sigma T · Hadi│ LAN Install  │🟡 2/8     │ │
+│  │ 79 │ Gedung Plaza    │NetPro · Fajar│ Fiber Optic  │✅ Done    │ │
+│  └────┴─────────────────┴──────────────┴──────────────┴───────────┘ │
 │                                                                      │
-│  Showing 6 of 83 jobs  ←  1  2  3 ... 14  →                        │
+│  Showing 5 of 83 jobs  ←  1  2  3 ... 17  →                        │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### Screen 8: Create Job Order
+### Screen 8: Create Job Order (Client)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│  SIGMA  │  Dashboard  Jobs  Technicians  SOPs  Payouts               │
+│  SIGMA  │  Dashboard  Jobs  Vendors  SOPs                            │
 ├─────────┴────────────────────────────────────────────────────────────┤
 │  ←  Create Job Order                                                 │
 ├──────────────────────────────────────────────────────────────────────┤
@@ -318,27 +303,31 @@
 │  │ e.g. Telkom Margonda     │   │ Full address or coordinates     │ │
 │  └──────────────────────────┘   └─────────────────────────────────┘ │
 │                                                                      │
-│  ASSIGNMENT                                                          │
-│  ┌──────────────────────────┐   ┌─────────────────────────────────┐ │
-│  │ Technician *          ▾  │   │ Scheduled Date & Time *         │ │
-│  │ Select technician        │   │ 19 May 2026  09:00              │ │
-│  └──────────────────────────┘   └─────────────────────────────────┘ │
-│                                                                      │
-│  SOP TEMPLATE                                                        │
+│  SERVICE                                                             │
 │  ┌──────────────────────────────────────────────────────────────┐   │
-│  │ Select SOP *                                              ▾  │   │
+│  │ Service Category *                                        ▾  │   │
+│  │ e.g. LAN Installation, Fiber Optic Splicing, Site Survey     │   │
 │  └──────────────────────────────────────────────────────────────┘   │
 │                                                                      │
 │  [Selected: LAN Installation]                                        │
 │  ┌──────────────────────────────────────────────────────────────┐   │
-│  │  9 steps  ·  Est. 3h  ·  Total payout: Rp 85,000           │   │
-│  │  1. Site arrival check-in              Rp  5,000             │   │
-│  │  2. Equipment unboxing                 Rp  5,000             │   │
-│  │  3. Cable route survey                 Rp 10,000             │   │
-│  │  4. Patch panel install                Rp 15,000             │   │
-│  │  5. Switch rack mount                  Rp 15,000             │   │
-│  │  ... +4 more steps                                           │   │
+│  │  SOP: LAN Installation v1.2  ·  9 steps  ·  Est. 3h         │   │
+│  │  1. Site arrival check-in                                    │   │
+│  │  2. Equipment unboxing                                       │   │
+│  │  3. Cable route survey                                       │   │
+│  │  ... +6 more steps                          [View full SOP]  │   │
 │  └──────────────────────────────────────────────────────────────┘   │
+│                                                                      │
+│  ASSIGNMENT                                                          │
+│  ┌──────────────────────────┐   ┌─────────────────────────────────┐ │
+│  │ Vendor *              ▾  │   │ Worker *               ▾   │ │
+│  │ Select partner vendor    │   │ Select from vendor's team      │ │
+│  └──────────────────────────┘   └─────────────────────────────────┘ │
+│                                                                      │
+│  ┌──────────────────────────┐   ┌─────────────────────────────────┐ │
+│  │ Scheduled Date & Time *  │   │ Payout Amount (to vendor) *    │ │
+│  │ 19 May 2026  09:00       │   │ Rp _______________             │ │
+│  └──────────────────────────┘   └─────────────────────────────────┘ │
 │                                                                      │
 │  NOTES (optional)                                                    │
 │  ┌──────────────────────────────────────────────────────────────┐   │
@@ -352,148 +341,186 @@
 
 ---
 
-### Screen 9: Job Detail (Real-time Progress)
+### Screen 9: Job Detail — Real-time Progress (Client)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
 │  SIGMA  │  ← Jobs  /  Job #83 — Telkom Margonda                     │
 ├──────────────────────────────────────────────────────────────────────┤
 │                                                                      │
-│  LAN Installation · Budi Santoso                    🟡 IN PROGRESS  │
+│  LAN Installation                                   🟡 IN PROGRESS  │
 │  📍 Jl. Margonda Raya No.5  ·  🗓 19 May 2026  ·  ⏰ 09:00        │
+│  🏢 Vendor: PT. Sigma Teknik  ·  👤 Budi Santoso                   │
 │                                                                      │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐              │
-│  │ Progress     │  │ Elapsed Time │  │ Payout Earned│              │
-│  │  4 / 9 steps │  │   1h 23m     │  │   Rp 35,000  │              │
-│  │ ████████░░░░ │  │              │  │  / Rp 85,000  │              │
+│  │ Progress     │  │ Elapsed Time │  │ Payout       │              │
+│  │  4 / 9 steps │  │   1h 23m     │  │  Rp 350,000  │              │
+│  │ ████████░░░░ │  │              │  │  Pending     │              │
 │  └──────────────┘  └──────────────┘  └──────────────┘              │
 │                                                                      │
 │  SOP STEP PROGRESS                         EVIDENCE PHOTOS          │
 │  ┌────────────────────────────────┐  ┌───────────────────────────┐  │
 │  │ ✅ 1. Site arrival check-in    │  │                           │  │
-│  │       09:02  ·  1 photo        │  │  [Photo grid — click to  │  │
-│  │ ✅ 2. Equipment unboxing       │  │   view full size]         │  │
-│  │       09:18  ·  2 photos       │  │                           │  │
-│  │ ✅ 3. Cable route survey       │  │  Step 1: ▓▓ 1 photo      │  │
-│  │       09:41  ·  3 photos       │  │  Step 2: ▓▓ 2 photos     │  │
-│  │ ✅ 4. Patch panel install      │  │  Step 3: ▓▓ 3 photos     │  │
-│  │       10:24  ·  2 photos       │  │  Step 4: ▓▓ 2 photos     │  │
-│  │ ▶ 5. Switch rack mount         │  │                           │  │
-│  │       In progress...           │  │                           │  │
-│  │ ○ 6. Cable termination         │  └───────────────────────────┘  │
-│  │ ○ 7. Cable labeling            │                                  │
-│  │ ○ 8. Network testing           │  ACTIVITY LOG                   │
-│  │ ○ 9. Site sign-off             │  ┌───────────────────────────┐  │
-│  └────────────────────────────────┘  │ 10:42 Step 4 completed   │  │
-│                                       │ 09:41 Step 3 completed   │  │
-│                                       │ 09:18 Step 2 completed   │  │
-│                                       │ 09:02 Job started        │  │
+│  │       09:02  ·  1 photo        │  │  Step 1: ▓▓ 1 photo      │  │
+│  │ ✅ 2. Equipment unboxing       │  │  Step 2: ▓▓ 2 photos     │  │
+│  │       09:18  ·  2 photos       │  │  Step 3: ▓▓ 3 photos     │  │
+│  │ ✅ 3. Cable route survey       │  │  Step 4: ▓▓ 2 photos     │  │
+│  │       09:41  ·  3 photos       │  │                           │  │
+│  │ ✅ 4. Patch panel install      │  │  [Click to view gallery]  │  │
+│  │       10:24  ·  2 photos       │  │                           │  │
+│  │ ▶ 5. Switch rack mount         │  └───────────────────────────┘  │
+│  │       In progress...           │                                  │
+│  │ ○ 6. Cable termination         │  ACTIVITY LOG                   │
+│  │ ○ 7. Cable labeling            │  ┌───────────────────────────┐  │
+│  │ ○ 8. Network testing           │  │ 10:42 Step 4 completed   │  │
+│  │ ○ 9. Site sign-off             │  │ 09:41 Step 3 completed   │  │
+│  └────────────────────────────────┘  │ 09:02 Job started        │  │
 │                                       └───────────────────────────┘  │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### Screen 10: SOP Builder
+### Screen 10: Vendor Management (Client)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│  SIGMA  │  Dashboard  Jobs  Technicians  SOPs  Payouts               │
+│  SIGMA  │  Dashboard  Jobs  Vendors  SOPs                            │
 ├─────────┴────────────────────────────────────────────────────────────┤
-│  ←  SOP Builder  /  LAN Installation  v1.2          [Save] [Publish] │
-├──────────────────────────────────────────────────────────────────────┤
 │                                                                      │
-│  ┌──────────────────────────┐   ┌─────────────────────────────────┐ │
-│  │ SOP Name *               │   │ Estimated Duration              │ │
-│  │ LAN Installation         │   │  3 hours                        │ │
-│  └──────────────────────────┘   └─────────────────────────────────┘ │
+│  Partner Vendors                                                     │
 │                                                                      │
-│  ┌──────────────────────────────────────────────────────────────┐   │
-│  │ Description                                                  │   │
-│  │ Standard procedure for LAN installation at client site...   │   │
-│  └──────────────────────────────────────────────────────────────┘   │
-│                                                                      │
-│  STEPS                                              Total: Rp 85,000 │
-│                                                                      │
-│  ⋮ ┌──────────────────────────────────────────┬──────────┬───────┐  │
-│    │ 1. Site arrival check-in                  │ Rp 5,000 │ ✏️ 🗑 │  │
-│    │    📷 Photo required  📝 Notes optional    │          │      │  │
-│    └──────────────────────────────────────────┴──────────┴───────┘  │
-│                                                                      │
-│  ⋮ ┌──────────────────────────────────────────┬──────────┬───────┐  │
-│    │ 2. Equipment unboxing                     │ Rp 5,000 │ ✏️ 🗑 │  │
-│    │    📷 Photo required  📝 Notes optional    │          │      │  │
-│    └──────────────────────────────────────────┴──────────┴───────┘  │
-│                                                                      │
-│  ⋮ ┌──────────────────────────────────────────┬──────────┬───────┐  │
-│    │ 3. Cable route survey                     │Rp 10,000 │ ✏️ 🗑 │  │
-│    │    📷 Photo required  ⚠️ Mandatory order  │          │      │  │
-│    └──────────────────────────────────────────┴──────────┴───────┘  │
-│                                                                      │
-│                              [+ Add Step]                            │
-│                                                                      │
-│  ⚠  This SOP is used in 3 active jobs.                              │
-│     Publishing will create v1.3 — existing jobs keep v1.2.          │
+│  ┌────────────────────────────────────────────────────────────────┐ │
+│  │  🏢 PT. Sigma Teknik               🟢 Active                   │ │
+│  │     12 workers  ·  38 jobs this month                      │ │
+│  │     Categories: LAN Install, Cable Inspection, Site Survey     │ │
+│  │                                              [View]  [Jobs]   │ │
+│  ├────────────────────────────────────────────────────────────────┤ │
+│  │  🏢 NetPro Solutions               🟢 Active                   │ │
+│  │     8 workers  ·  21 jobs this month                       │ │
+│  │     Categories: Fiber Optic, Site Survey                       │ │
+│  │                                              [View]  [Jobs]   │ │
+│  └────────────────────────────────────────────────────────────────┘ │
 │                                                                      │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### Screen 11: Payout Report
+### Screen 11: SOP Viewer (Client — read-only)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│  SIGMA  │  Dashboard  Jobs  Technicians  SOPs  Payouts               │
+│  SIGMA  │  Dashboard  Jobs  Vendors  SOPs                            │
 ├─────────┴────────────────────────────────────────────────────────────┤
 │                                                                      │
-│  Payout Report                   Period: May 2026 ▾  [Export CSV]   │
+│  SOPs by Service Category                                           │
+│                                                                      │
+│  ┌──────────────────────────────────────────────────────────────┐   │
+│  │ 🔧 LAN Installation            v1.2  ·  9 steps  ·  Est. 3h  │   │
+│  │    1. Site arrival check-in                                  │   │
+│  │    2. Equipment unboxing                                     │   │
+│  │    3. Cable route survey         [▼ View all steps]          │   │
+│  └──────────────────────────────────────────────────────────────┘   │
+│                                                                      │
+│  ┌──────────────────────────────────────────────────────────────┐   │
+│  │ 🔧 Fiber Optic Splicing         v2.0  ·  14 steps  ·  Est 5h │   │
+│  │    1. Safety equipment check                                 │   │
+│  │    2. Cable preparation                                      │   │
+│  │    3. Splice machine setup       [▼ View all steps]          │   │
+│  └──────────────────────────────────────────────────────────────┘   │
+│                                                                      │
+│  ┌──────────────────────────────────────────────────────────────┐   │
+│  │ 🔧 Site Survey                  v1.0  ·  12 steps  ·  Est 4h │   │
+│  │    1. Site arrival and registration                          │   │
+│  │    2. Area perimeter walk        [▼ View all steps]          │   │
+│  └──────────────────────────────────────────────────────────────┘   │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### Screen 12: Payout Approval (Client)
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│  SIGMA  │  Dashboard  Jobs  Vendors  SOPs  Payouts                   │
+├─────────┴────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  Payouts                         Period: May 2026 ▾  [Export CSV]   │
 │                                                                      │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐              │
-│  │ Total Payout │  │ Jobs Done    │  │ Steps Done   │              │
-│  │  Rp 4,240,000│  │     38       │  │    342       │              │
+│  │ Total Payout │  │ Jobs Done    │  │ Pending      │              │
+│  │  Rp 12.4M    │  │     38       │  │  Rp 7.2M     │              │
 │  └──────────────┘  └──────────────┘  └──────────────┘              │
 │                                                                      │
-│  ┌────┬─────────────────┬──────────┬─────────┬────────┬──────────┐ │
-│  │    │ Technician      │ Jobs     │ Steps   │ Amount │ Status   │ │
-│  ├────┼─────────────────┼──────────┼─────────┼────────┼──────────┤ │
-│  │ ▼  │ Budi Santoso    │    9     │   81    │ Rp 765k│ ⏳ Pending│ │
-│  │    │   └ View jobs   │          │         │        │ [Mark Paid│ │
-│  │ ▼  │ Andi Raharjo    │    7     │   63    │ Rp 595k│ ✅ Paid   │ │
-│  │ ▼  │ Reza Maulana    │    8     │   72    │ Rp 680k│ ⏳ Pending│ │
-│  │ ▼  │ Hadi Pratama    │    6     │   54    │ Rp 510k│ ✅ Paid   │ │
-│  │ ▼  │ Fajar Kurnia    │    8     │   72    │ Rp 690k│ ⏳ Pending│ │
-│  └────┴─────────────────┴──────────┴─────────┴────────┴──────────┘ │
+│  ┌─────────┬──────────────────┬──────────┬──────────┬────────────┐ │
+│  │ Vendor  │ Job              │ Tech     │ Amount   │ Status     │ │
+│  ├─────────┼──────────────────┼──────────┼──────────┼────────────┤ │
+│  │Sigma T  │ Telkom Margonda  │ Budi S.  │ Rp 350k  │⏳ [Approve]│ │
+│  │Sigma T  │ Tower Ciputat    │ Andi R.  │ Rp 250k  │⏳ [Approve]│ │
+│  │NetPro   │ BTS Depok Timur  │ Reza M.  │ Rp 400k  │✅ Approved │ │
+│  │Sigma T  │ Site Bogor       │ Hadi P.  │ Rp 300k  │⏳ [Approve]│ │
+│  │NetPro   │ Gedung Plaza     │ Fajar K. │ Rp 500k  │✅ Approved │ │
+│  └─────────┴──────────────────┴──────────┴──────────┴────────────┘ │
 │                                                                      │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### Screen 12: Technician Management
+## Web Dashboard — Vendor Admin
+
+---
+
+### Screen 13: Vendor Dashboard Overview
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│  SIGMA  │  Dashboard  Jobs  Technicians  SOPs  Payouts               │
+│  SIGMA  │  Dashboard  Jobs  Workers  Payouts                     │
+│         │                                    PT. Sigma Teknik · Andi ▾│
 ├─────────┴────────────────────────────────────────────────────────────┤
 │                                                                      │
-│  Technicians                                  [+ Invite Technician]  │
+│  Good morning, Andi!  Monday, 19 May 2026                           │
 │                                                                      │
-│  ┌──────────────────────────────────────────────────────────────┐   │
-│  │  🔍 Search by name or email                                  │   │
-│  └──────────────────────────────────────────────────────────────┘   │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌─────────┐ │
+│  │ Active Jobs  │  │ Workers  │  │  Steps Done  │  │ Pending │ │
+│  │ (all clients)│  │  On-site     │  │    Today     │  │Payouts  │ │
+│  │     12       │  │    8 / 15    │  │  47 / 63     │  │ Rp 4.2M │ │
+│  └──────────────┘  └──────────────┘  └──────────────┘  └─────────┘ │
+│                                                                      │
+│  TECHNICIAN STATUS                    TODAY'S JOBS                   │
+│  ┌──────────────────────────┐  ┌──────────────────────────────────┐ │
+│  │ Budi S.     🟡 On-site  │  │ Tech    Site           Progress  │ │
+│  │ Andi R.     🟡 On-site  │  │ Budi    Telkom Marg    4/9       │ │
+│  │ Reza M.     ✅ Done     │  │ Andi    Tower Ciputat  0/6       │ │
+│  │ Hadi P.     🟡 On-site  │  │ Hadi    Site Bogor     2/8       │ │
+│  │ Fajar K.    🔵 Assigned │  │ Fajar   Gedung Plaza   Pending   │ │
+│  │ Siti N.     ⚪ Free     │  │                                  │ │
+│  └──────────────────────────┘  └──────────────────────────────────┘ │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### Screen 14: Worker Management (Vendor)
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│  SIGMA  │  Dashboard  Jobs  Workers  Payouts                     │
+├─────────┴────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  Workers                                  [+ Invite Worker]  │
 │                                                                      │
 │  ┌────────────────────────────────────────────────────────────────┐ │
 │  │  👤 Budi Santoso          🟢 Active · On-site                  │ │
-│  │     budi@email.com · 9 jobs this month · Rp 765k earned       │ │
+│  │     budi@email.com · 9 jobs this month                         │ │
 │  │                                    [View]  [Deactivate]       │ │
 │  ├────────────────────────────────────────────────────────────────┤ │
-│  │  👤 Andi Raharjo          🟢 Active · Available               │ │
-│  │     andi@email.com · 7 jobs this month · Rp 595k earned       │ │
-│  │                                    [View]  [Deactivate]       │ │
-│  ├────────────────────────────────────────────────────────────────┤ │
-│  │  👤 Reza Maulana          🟢 Active · On-site                  │ │
-│  │     reza@email.com · 8 jobs this month · Rp 680k earned       │ │
+│  │  👤 Andi Raharjo          🟢 Active · On-site                  │ │
+│  │     andi@email.com · 7 jobs this month                         │ │
 │  │                                    [View]  [Deactivate]       │ │
 │  ├────────────────────────────────────────────────────────────────┤ │
 │  │  👤 Siti Nurhaliza        ⚪ Inactive                          │ │
@@ -501,7 +528,85 @@
 │  │                                   [View]  [Reactivate]        │ │
 │  └────────────────────────────────────────────────────────────────┘ │
 │                                                                      │
-│  14 technicians total  ·  11 active  ·  3 inactive                  │
+│  15 workers total  ·  12 active  ·  3 inactive                  │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### Screen 15: Payout Summary (Vendor)
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│  SIGMA  │  Dashboard  Jobs  Workers  Payouts                     │
+├─────────┴────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  Payouts                         Period: May 2026 ▾  [Export CSV]   │
+│                                                                      │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐              │
+│  │ Total Earned │  │  Approved    │  │  Pending     │              │
+│  │  Rp 8.6M     │  │  Rp 4.4M    │  │  Rp 4.2M     │              │
+│  └──────────────┘  └──────────────┘  └──────────────┘              │
+│                                                                      │
+│  ┌──────────────────┬──────────────┬──────────┬────────┬──────────┐ │
+│  │ Job              │ Client       │ Tech     │ Amount │ Status   │ │
+│  ├──────────────────┼──────────────┼──────────┼────────┼──────────┤ │
+│  │ Telkom Margonda  │ PT. Telkom   │ Budi S.  │ Rp 350k│⏳ Pending│ │
+│  │ Tower Ciputat    │ PT. Telkom   │ Andi R.  │ Rp 250k│⏳ Pending│ │
+│  │ BTS Depok Timur  │ PT. Telkom   │ Reza M.  │ Rp 400k│✅ Approved│ │
+│  │ Site Semarang    │ Indosat      │ Hadi P.  │ Rp 300k│✅ Approved│ │
+│  └──────────────────┴──────────────┴──────────┴────────┴──────────┘ │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Super Admin — SOP Builder
+
+---
+
+### Screen 16: SOP Builder (Super Admin)
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│  SIGMA ADMIN  │  Orgs  Service Categories  SOPs  Payouts             │
+├───────────────┴──────────────────────────────────────────────────────┤
+│  ←  SOP Builder  /  LAN Installation  v1.2       [Save] [Publish]   │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  ┌──────────────────────────┐   ┌─────────────────────────────────┐ │
+│  │ SOP Name *               │   │ Service Category *              │ │
+│  │ LAN Installation         │   │ LAN Installation           ▾   │ │
+│  └──────────────────────────┘   └─────────────────────────────────┘ │
+│                                                                      │
+│  ┌──────────────────────────────────────────────────────────────┐   │
+│  │ Description                                                  │   │
+│  │ Standard procedure for LAN installation at client site       │   │
+│  └──────────────────────────────────────────────────────────────┘   │
+│                                                                      │
+│  STEPS                                                               │
+│                                                                      │
+│  ⋮ ┌─────────────────────────────────────────────────────┬───────┐  │
+│    │ 1. Site arrival check-in                             │ ✏️ 🗑 │  │
+│    │    📷 Photo required  📝 Notes optional              │      │  │
+│    └─────────────────────────────────────────────────────┴───────┘  │
+│                                                                      │
+│  ⋮ ┌─────────────────────────────────────────────────────┬───────┐  │
+│    │ 2. Equipment unboxing                                │ ✏️ 🗑 │  │
+│    │    📷 Photo required  📝 Notes optional              │      │  │
+│    └─────────────────────────────────────────────────────┴───────┘  │
+│                                                                      │
+│  ⋮ ┌─────────────────────────────────────────────────────┬───────┐  │
+│    │ 3. Cable route survey                                │ ✏️ 🗑 │  │
+│    │    📷 Photo required  ⚠️ Mandatory order             │      │  │
+│    └─────────────────────────────────────────────────────┴───────┘  │
+│                                                                      │
+│                              [+ Add Step]                            │
+│                                                                      │
+│  ⚠  This SOP is used in 3 active jobs.                              │
+│     Publishing creates v1.3 — existing jobs keep v1.2.              │
+│                                                                      │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -519,23 +624,24 @@
 │  ┌───────────────────────┐  │
 │  │ 🔵 New job assigned   │  │
 │  │ BTS Depok Timur —     │  │
+│  │ by PT. Telkom         │  │
 │  │ tomorrow 08:00        │  │
 │  │              10:42 AM │  │
 │  └───────────────────────┘  │
 │                             │
 │  ┌───────────────────────┐  │
-│  │ 💰 Payout processed   │  │
-│  │ April 2026 payout:    │  │
-│  │ Rp 3,450,000          │  │
-│  │               9:00 AM │  │
+│  │ ⏰ Reminder           │  │
+│  │ Tower Ciputat starts  │  │
+│  │ in 1 hour (14:00)     │  │
+│  │              13:00 PM │  │
 │  └───────────────────────┘  │
 │                             │
 │  YESTERDAY                  │
 │                             │
 │  ┌───────────────────────┐  │
-│  │ ✅ Job completed      │  │
-│  │ BTS Depok confirmed   │  │
-│  │ by Rina W.            │  │
+│  │ ✅ Job confirmed      │  │
+│  │ BTS Depok payout      │  │
+│  │ approved by PT. Telkom│  │
 │  │               6:30 PM │  │
 │  └───────────────────────┘  │
 │                             │

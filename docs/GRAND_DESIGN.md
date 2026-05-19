@@ -12,7 +12,7 @@
 │                        SIGMA MARKETPLACE                            │
 │                                                                     │
 │  ┌──────────────────┐    ┌──────────────────┐   ┌───────────────┐  │
-│  │  Technician App  │    │ Client Dashboard │   │ Admin Panel   │  │
+│  │  Worker App  │    │ Client Dashboard │   │ Admin Panel   │  │
 │  │ (React Native +  │    │   (Next.js)      │   │  (Next.js)    │  │
 │  │   Expo)          │    │                  │   │               │  │
 │  └────────┬─────────┘    └────────┬─────────┘   └───────┬───────┘  │
@@ -119,7 +119,7 @@ sigma-web/
 │   ├── (client)/        # client admin area
 │   │   ├── dashboard/   # overview metrics
 │   │   ├── jobs/        # job list, create, detail
-│   │   ├── technicians/ # team management
+│   │   ├── workers/ # team management
 │   │   ├── sop/         # SOP builder
 │   │   └── payouts/     # earnings reports
 │   └── (admin)/         # super admin area
@@ -143,7 +143,7 @@ sigma-web/
 ### 3.1 Job Assignment Flow
 
 ```
-Client Admin (Web)                 Go API              Technician (Mobile)
+Client Admin (Web)                 Go API              Worker (Mobile)
        │                              │                        │
        │── POST /job-orders ─────────►│                        │
        │                              │── Save to PostgreSQL   │
@@ -164,7 +164,7 @@ Client Admin (Web)                 Go API              Technician (Mobile)
 ### 3.2 Offline Task Completion & Sync Flow
 
 ```
-Technician (Mobile — No Internet)
+Worker (Mobile — No Internet)
        │
        │── Open job from local SQLite
        │── Execute SOP steps
@@ -199,7 +199,7 @@ Go API: calculate payout
        │
        ▼
 Write to payouts table
-  { job_id, technician_id, amount, period, status: "pending" }
+  { job_id, worker_id, amount, period, status: "pending" }
        │
        ▼
 Client Admin exports CSV / views report
@@ -271,7 +271,7 @@ Response 409: { "error": "conflict", "conflicts": [...] }
 |---|---|---|
 | job_orders | Server | Client/admin controls assignment |
 | sop_steps | Server | Read-only on device |
-| step_completions | Device | Technician is source of truth |
+| step_completions | Device | Worker is source of truth |
 | job status: COMPLETE | Most advanced | Cannot regress a completed job |
 
 ---
