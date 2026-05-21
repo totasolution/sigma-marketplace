@@ -2,6 +2,12 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../sigma-web"
+		},
+		{
+			"path": "../sigma-api"
 		}
 	]
 }
