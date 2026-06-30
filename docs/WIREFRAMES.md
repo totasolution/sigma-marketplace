@@ -3,6 +3,11 @@
 **Version:** 1.1  
 **Date:** 2026-05-19
 
+> **v2.0 Projects wireframes (HTML):** the engagement-model screens — project builder (4 pricing models),
+> client monitor, vendor reporting, worker management, and accrual payouts — are clickable mockups in
+> [`/wireframes/index.html`](../wireframes/index.html) (styled with the Sigma ui-kit). The ASCII screens below are
+> the original v1.1 job-order flows.
+
 ---
 
 ## Mobile App (Worker — belongs to Vendor)

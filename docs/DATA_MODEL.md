@@ -1,7 +1,8 @@
 # Data Model — Sigma Marketplace
 
-**Version:** 1.1  
-**Date:** 2026-05-19
+**Version:** 2.0  
+**Date:** 2026-06-30  
+**Note:** v2.0 introduces the **Projects** engagement model ([PROJECTS_DESIGN.md](PROJECTS_DESIGN.md)). `job_orders` and `payouts` are migrated to `projects` / `outcomes` / `payout_accruals` / `payout_statements`; they remain below for migration reference.
 
 ---
 
@@ -11,20 +12,24 @@
 organizations (type: client | vendor)
     │
     ├── [client] ──── client_vendor_relationships ──── [vendor]
-    │                                                      │
-    ├── [client] job_orders ────────────────────── worker_id (vendor user)
-    │               │                                      │
-    │               ├── job_sop_steps (snapshot)    users (role: vendor_admin | worker)
-    │               ├── step_completions
-    │               │       └── step_photos
-    │               └── payouts
     │
-    ├── [vendor] users (role: vendor_admin | worker)
+    ├── [client] projects ──── project_vendors ──── [vendor]  (many-to-many)
+    │               ├── project_milestones            (milestone model)
+    │               └── outcomes (visit|sale|milestone|flat|retainer_period · per vendor)
+    │                      ├── job_sop_steps (snapshot, type=visit)
+    │                      ├── step_completions → step_photos   (evidence)
+    │                      ├── disputes (client raises; super_admin arbitrates)
+    │                      └── payout_accruals ──► payout_statements
+    │                                              (per VENDOR/period: pending→approved→paid)
+    │
+    ├── [vendor] users (vendor_admin | worker)
+    │               └── worker_profiles, worker_skills          (vendor-internal roster)
     │
 service_categories (platform-level)
-    └── sop_templates
-            └── sop_steps
+    └── sop_templates → sop_steps
 ```
+
+> **Legacy (v1):** `job_orders` → `projects`+`outcomes`; `payouts` → `payout_accruals`+`payout_statements`. Kept below for migration reference.
 
 ---
 
@@ -136,7 +141,7 @@ CREATE TABLE sop_steps (
 );
 ```
 
-### job_orders
+### job_orders  *(v1 — MIGRATED to `projects` + `outcomes` in v2.0; retained for migration reference)*
 
 ```sql
 -- Created by client_admin. Assigned to a worker from a partner vendor.
@@ -225,7 +230,7 @@ CREATE TABLE step_photos (
 );
 ```
 
-### payouts
+### payouts  *(v1 — REPLACED by `payout_accruals` + `payout_statements` in v2.0)*
 
 ```sql
 -- One payout record per job_order.
@@ -252,6 +257,193 @@ CREATE INDEX idx_payouts_period     ON payouts(period);
 CREATE INDEX idx_payouts_status     ON payouts(status);
 ```
 
+---
+
+## v2.0 — Projects Model
+
+Replaces `job_orders`/`payouts`. Design rationale: [PROJECTS_DESIGN.md](PROJECTS_DESIGN.md).
+
+### projects
+
+```sql
+CREATE TABLE projects (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    client_org_id       UUID NOT NULL REFERENCES organizations(id),
+    -- vendors attached via project_vendors (many-to-many)
+    service_category_id UUID NOT NULL REFERENCES service_categories(id),
+    title               TEXT NOT NULL,
+    description         TEXT,
+    pricing_model       TEXT NOT NULL CHECK (pricing_model IN ('per_unit','retainer','flat','milestone')),
+    unit_rate           NUMERIC(14,2),         -- per_unit
+    retainer_amount     NUMERIC(14,2),         -- retainer (per worker per period)
+    retainer_period     TEXT CHECK (retainer_period IN ('weekly','monthly')),
+    flat_amount         NUMERIC(14,2),         -- flat
+    evidence_photo_required BOOLEAN NOT NULL DEFAULT true,
+    evidence_min_photos     INTEGER NOT NULL DEFAULT 1,
+    evidence_require_gps    BOOLEAN NOT NULL DEFAULT true,
+    evidence_require_ref    BOOLEAN NOT NULL DEFAULT false,
+    audit_window_days   INTEGER NOT NULL DEFAULT 7,
+    sop_template_id     UUID REFERENCES sop_templates(id),
+    sop_version         INTEGER,
+    status              TEXT NOT NULL DEFAULT 'draft'
+                        CHECK (status IN ('draft','active','paused','closed','archived')),
+    starts_at           TIMESTAMPTZ,
+    ends_at             TIMESTAMPTZ,
+    created_by          UUID NOT NULL REFERENCES users(id),
+    created_at          TIMESTAMPTZ NOT NULL DEFAULT now(),
+    updated_at          TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX idx_projects_client ON projects(client_org_id);
+CREATE INDEX idx_projects_status ON projects(status);
+```
+
+Integrity (enforced in app / triggers): each `project_vendors` pairing must have an active
+`client_vendor_relationships` with the client; pricing fields required by `pricing_model` must be set; pricing is
+uniform across a project's vendors (v1) and immutable once the project leaves `draft`; an outcome's `vendor_org_id`
+must be one of the project's participating vendors.
+
+### project_vendors
+
+```sql
+-- Many-to-many: a project may engage several vendors. Each pairing needs an active client_vendor_relationship.
+CREATE TABLE project_vendors (
+    id                 UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    project_id         UUID NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
+    vendor_org_id      UUID NOT NULL REFERENCES organizations(id),
+    retainer_headcount INTEGER,    -- retainer projects: placed headcount the vendor declares
+    status             TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('active','inactive')),
+    created_at         TIMESTAMPTZ NOT NULL DEFAULT now(),
+    UNIQUE(project_id, vendor_org_id)
+);
+CREATE INDEX idx_project_vendors_vendor ON project_vendors(vendor_org_id);
+```
+
+### project_milestones
+
+```sql
+CREATE TABLE project_milestones (
+    id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    project_id  UUID NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
+    sequence    INTEGER NOT NULL,
+    title       TEXT NOT NULL,
+    amount      NUMERIC(14,2) NOT NULL,
+    UNIQUE(project_id, sequence)
+);
+```
+
+### worker_profiles / worker_skills (vendor-internal roster — decoupled from projects; vendor + super_admin only)
+
+```sql
+CREATE TABLE worker_profiles (
+    user_id              UUID PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,  -- role='worker'
+    phone                TEXT,
+    region               TEXT,
+    base_rate            NUMERIC(14,2),
+    employment_attested  BOOLEAN NOT NULL DEFAULT false,  -- vendor attests worker is its employee
+    employment_ref       TEXT,
+    availability_status  TEXT NOT NULL DEFAULT 'available'
+                         CHECK (availability_status IN ('available','limited','on_leave')),
+    max_concurrent       INTEGER NOT NULL DEFAULT 5,
+    notes                TEXT,
+    created_at           TIMESTAMPTZ NOT NULL DEFAULT now(),
+    updated_at           TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE worker_skills (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id             UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    service_category_id UUID NOT NULL REFERENCES service_categories(id),
+    certification       TEXT,
+    certified_at        DATE,
+    UNIQUE(user_id, service_category_id)
+);
+CREATE INDEX idx_worker_skills_user ON worker_skills(user_id);
+```
+
+### outcomes
+
+```sql
+-- A unit of work that may earn payout. Polymorphic by `type`.
+CREATE TABLE outcomes (
+    id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    project_id    UUID NOT NULL REFERENCES projects(id),
+    vendor_org_id UUID NOT NULL REFERENCES organizations(id),   -- payout attribution (per vendor)
+    type          TEXT NOT NULL CHECK (type IN ('visit','sale','milestone','flat','retainer_period')),
+    quantity      INTEGER NOT NULL DEFAULT 1,
+    amount        NUMERIC(14,2) NOT NULL DEFAULT 0,        -- computed accrual at confirmation
+    milestone_id  UUID REFERENCES project_milestones(id),  -- type='milestone'
+    period        TEXT,                                    -- type='retainer_period' e.g. '2026-07'
+    occurred_at   TIMESTAMPTZ NOT NULL,
+    status        TEXT NOT NULL DEFAULT 'reported'
+                  CHECK (status IN ('reported','confirmed','disputed','rejected')),
+    reported_by   UUID REFERENCES users(id),               -- operational reporter; NULL = system (retainer_period)
+    confirmed_at  TIMESTAMPTZ,
+    site_name     TEXT, site_address TEXT, site_lat DECIMAL(10,8), site_lng DECIMAL(11,8),
+    created_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
+    updated_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX idx_outcomes_project ON outcomes(project_id);
+CREATE INDEX idx_outcomes_vendor  ON outcomes(vendor_org_id);
+CREATE INDEX idx_outcomes_status  ON outcomes(status);
+```
+
+> **Re-point:** `job_sop_steps`, `step_completions`, `step_photos` now reference `outcomes(id)` (via a new
+> `outcome_id`) instead of `job_order_id`, for `type='visit'` outcomes. Backfill maps each old job → one outcome.
+
+### disputes
+
+```sql
+CREATE TABLE disputes (
+    id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    outcome_id  UUID NOT NULL REFERENCES outcomes(id),
+    raised_by   UUID NOT NULL REFERENCES users(id),    -- client_admin
+    reason      TEXT NOT NULL,
+    status      TEXT NOT NULL DEFAULT 'open'
+                CHECK (status IN ('open','resolved_upheld','resolved_rejected','withdrawn')),
+    arbiter_id  UUID REFERENCES users(id),             -- super_admin
+    resolution  TEXT,
+    resolved_at TIMESTAMPTZ,
+    created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX idx_disputes_outcome ON disputes(outcome_id);
+```
+
+### payout_statements / payout_accruals
+
+```sql
+-- Per-(vendor, worker, period) settlement. Replaces the old per-job `payouts`.
+CREATE TABLE payout_statements (
+    id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    vendor_org_id UUID NOT NULL REFERENCES organizations(id),
+    period        TEXT NOT NULL,
+    total_amount  NUMERIC(16,2) NOT NULL DEFAULT 0,
+    status        TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending','approved','paid')),
+    approved_by   UUID REFERENCES users(id),
+    approved_at   TIMESTAMPTZ,
+    paid_at       TIMESTAMPTZ,
+    created_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
+    UNIQUE(vendor_org_id, period)
+);
+CREATE INDEX idx_statements_status ON payout_statements(status);
+
+-- One accrual per confirmed outcome.
+CREATE TABLE payout_accruals (
+    id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    project_id    UUID NOT NULL REFERENCES projects(id),
+    outcome_id    UUID NOT NULL REFERENCES outcomes(id) UNIQUE,
+    statement_id  UUID REFERENCES payout_statements(id),
+    client_org_id UUID NOT NULL REFERENCES organizations(id),
+    vendor_org_id UUID NOT NULL REFERENCES organizations(id),
+    period        TEXT NOT NULL,
+    amount        NUMERIC(14,2) NOT NULL,
+    created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX idx_accruals_statement ON payout_accruals(statement_id);
+CREATE INDEX idx_accruals_vendor    ON payout_accruals(vendor_org_id);
+```
+
+---
+
 ### notifications
 
 ```sql
@@ -259,8 +451,10 @@ CREATE TABLE notifications (
     id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id     UUID NOT NULL REFERENCES users(id),
     type        TEXT NOT NULL,
-                -- JOB_ASSIGNED | JOB_STARTED | JOB_COMPLETED
-                -- STEP_COMPLETED | PAYOUT_APPROVED | REMINDER
+                -- v2.0: PROJECT_ASSIGNED | OUTCOME_REPORTED | OUTCOME_DISPUTED
+                --       OUTCOME_CONFIRMED | DISPUTE_RESOLVED | RETAINER_ACCRUED
+                --       PAYOUT_APPROVED | REMINDER
+                -- legacy: JOB_ASSIGNED | JOB_STARTED | JOB_COMPLETED | STEP_COMPLETED
     payload     JSONB NOT NULL DEFAULT '{}',
     sent_at     TIMESTAMPTZ,
     delivered_at TIMESTAMPTZ,
@@ -288,12 +482,15 @@ CREATE TABLE refresh_tokens (
 
 ## WatermelonDB Local Schema (Mobile)
 
+> v2.0: `job_orders` becomes `projects`; add `outcomes` for offline sale/visit reporting. `step_completions` /
+> `step_photos` hang off an outcome. (Migration bumps the schema version + a WatermelonDB migration.)
+
 ```typescript
 // db/schema.ts
 import { appSchema, tableSchema } from '@nozbe/watermelondb'
 
 export const schema = appSchema({
-  version: 2,
+  version: 3, // v2.0 Projects model
   tables: [
     tableSchema({
       name: 'job_orders',
@@ -310,6 +507,19 @@ export const schema = appSchema({
         { name: 'status',               type: 'string' },
         { name: 'notes',                type: 'string', isOptional: true },
         { name: 'last_synced_at',       type: 'number', isOptional: true },
+      ],
+    }),
+    // v2.0: repeatable outcomes (sales/visits) reported offline by the worker.
+    tableSchema({
+      name: 'outcomes',
+      columns: [
+        { name: 'server_id',   type: 'string', isOptional: true },
+        { name: 'project_id',  type: 'string', isIndexed: true },
+        { name: 'type',        type: 'string' },   // visit | sale
+        { name: 'quantity',    type: 'number' },
+        { name: 'occurred_at', type: 'number' },
+        { name: 'status',      type: 'string' },    // reported | confirmed | disputed | rejected
+        { name: 'sync_status', type: 'string' },    // pending | synced | failed
       ],
     }),
     tableSchema({

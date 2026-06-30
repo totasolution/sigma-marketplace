@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sales Report — Sigma (Client)</title>
+<link rel="stylesheet" href="css/tokens.css"/>
+<link rel="stylesheet" href="css/components.css"/>
+<style>
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--surface-2);padding:3px}
+  .seg button{border:none;background:transparent;font-size:12px;font-weight:600;color:var(--muted);padding:6px 12px;border-radius:var(--r-pill);cursor:pointer}
+  .seg button.on{background:var(--brand);color:#fff}
+  .target{height:12px;border-radius:999px;background:color-mix(in srgb,var(--muted) 20%,var(--surface));overflow:hidden}
+  .target>i{display:block;height:100%;background:var(--brand);border-radius:999px}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo"><span class="mark">◧</span> PT. Telkom</div>
+    <div class="nav-grp">Main</div>
+    <a class="nav-item" href="#"><span class="ic">▦</span> Dashboard</a>
+    <a class="nav-item on" href="client-projects.html"><span class="ic">☷</span> Projects</a>
+    <a class="nav-item" href="payouts.html"><span class="ic">⎙</span> Payouts</a>
+    <a class="nav-item" href="#"><span class="ic">◷</span> Vendors</a>
+    <div class="spacer"></div>
+    <a class="nav-item" href="index.html"><span class="ic">◳</span> Wireframes</a>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="title">Soundbox — Sales Report</div>
+      <div class="right"><div class="avatar">RW</div></div>
+    </header>
+
+    <div class="content">
+      <div class="crumbs"><a href="client-projects.html">Projects</a> / Soundbox campaign / Report</div>
+
+      <!-- tabs for the project -->
+      <div class="tabs">
+        <a href="project-monitor.html">Monitor</a>
+        <a href="client-pipeline.html">Leads</a>
+        <a class="on" href="client-project-report.html">Sales Report</a>
+      </div>
+
+      <div class="pagehead">
+        <div><div class="ph-sub">Sales report · soundbox · Per-unit Rp75k</div><h1>Sales report</h1></div>
+        <div class="row">
+          <div class="seg"><button>7d</button><button class="on">30d</button><button>QTD</button><button>All</button></div>
+          <button class="btn">Export PDF</button>
+          <button class="btn">CSV</button>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="statgrid" style="margin-bottom:18px">
+        <div class="stat"><div class="l">Units sold</div><div class="n">96</div><div class="d" style="color:var(--ok)">▲ 21% vs prev 30d</div></div>
+        <div class="stat"><div class="l">Sales value</div><div class="n">Rp 7,2jt</div><div class="d muted">96 × Rp75k</div></div>
+        <div class="stat"><div class="l">Conversion</div><div class="n">23%</div><div class="d muted">won / leads assigned</div></div>
+        <div class="stat"><div class="l">Avg / active day</div><div class="n">4,8</div><div class="d muted">20 selling days</div></div>
+      </div>
+
+      <!-- target progress -->
+      <div class="card" style="margin-bottom:18px"><div class="cbd">
+        <div class="row between" style="margin-bottom:8px"><div class="sectlbl mb0">Target progress</div><span class="muted" style="font-size:13px">96 / 500 units · 19%</span></div>
+        <div class="target"><i style="width:19%"></i></div>
+        <p class="help" style="margin-bottom:0">On pace for ~144 by month-end · target 500 by Sep 2026</p>
+      </div></div>
+
+      <div class="grid-2">
+        <!-- LEFT: trend + vendor -->
+        <div class="stack">
+          <div class="card">
+            <div class="chd"><h3>Sales by week</h3><span class="pill brand">Last 6 weeks</span></div>
+            <div class="cbd">
+              <div class="chart">
+                <div class="col"><div class="v" style="height:34%"></div><div class="x">W20</div></div>
+                <div class="col"><div class="v" style="height:48%"></div><div class="x">W21</div></div>
+                <div class="col"><div class="v" style="height:55%"></div><div class="x">W22</div></div>
+                <div class="col"><div class="v" style="height:70%"></div><div class="x">W23</div></div>
+                <div class="col"><div class="v" style="height:64%"></div><div class="x">W24</div></div>
+                <div class="col"><div class="v" style="height:92%"></div><div class="x">W25</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card"><div class="chd"><h3>By vendor</h3><span class="muted" style="font-size:12px">units · share</span></div>
+            <table class="tbl"><tbody>
+              <tr><td><b>Sigma Teknik</b></td><td style="width:46%"><div class="bar"><i style="width:100%"></i></div></td><td class="mono">52</td></tr>
+              <tr><td><b>NetPro</b></td><td><div class="bar"><i style="width:54%;background:var(--ok)"></i></div></td><td class="mono">28</td></tr>
+              <tr><td><b>FastFix</b></td><td><div class="bar"><i style="width:31%;background:var(--info)"></i></div></td><td class="mono">16</td></tr>
+            </tbody></table>
+          </div>
+        </div>
+
+        <!-- RIGHT: funnel + region + reps -->
+        <div class="stack">
+          <div class="card"><div class="chd"><h3>Funnel</h3></div>
+            <table class="tbl"><tbody>
+              <tr><td>Assigned</td><td><div class="bar"><i style="width:100%"></i></div></td><td class="mono">420</td></tr>
+              <tr><td>Contacted</td><td><div class="bar"><i style="width:67%"></i></div></td><td class="mono">280</td></tr>
+              <tr><td>Visited</td><td><div class="bar"><i style="width:45%;background:var(--info)"></i></div></td><td class="mono">190</td></tr>
+              <tr><td>Won</td><td><div class="bar"><i style="width:23%;background:var(--ok)"></i></div></td><td class="mono">96</td></tr>
+            </tbody></table>
+          </div>
+
+          <div class="card"><div class="chd"><h3>By region</h3></div>
+            <table class="tbl"><tbody>
+              <tr><td>Jakarta Selatan</td><td class="mono">41</td><td><span class="pill ok">43%</span></td></tr>
+              <tr><td>Depok</td><td class="mono">33</td><td><span class="pill neutral">34%</span></td></tr>
+              <tr><td>Tangsel</td><td class="mono">22</td><td><span class="pill neutral">23%</span></td></tr>
+            </tbody></table>
+          </div>
+
+          <div class="card"><div class="chd"><h3>By category</h3></div>
+            <table class="tbl"><tbody>
+              <tr><td>F&amp;B / Resto</td><td class="mono">58</td><td><span class="pill ok">60%</span></td></tr>
+              <tr><td>Retail UMKM</td><td class="mono">26</td><td><span class="pill neutral">27%</span></td></tr>
+              <tr><td>Counter</td><td class="mono">12</td><td><span class="pill neutral">13%</span></td></tr>
+            </tbody></table>
+          </div>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top:16px">Sales report aggregates <b>confirmed outcomes</b> for this project, attributed to the <b>vendor</b> (workers are the vendor's own). Export as PDF/CSV for stakeholders.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Lead Pool — Sigma (Admin)</title>
+<link rel="stylesheet" href="css/tokens.css"/>
+<link rel="stylesheet" href="css/components.css"/>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo"><span class="mark">◧</span> Sigma Admin</div>
+    <div class="nav-grp">Overview</div>
+    <a class="nav-item" href="#"><span class="ic">▦</span> Dashboard</a>
+    <a class="nav-item" href="admin-crm.html"><span class="ic">◵</span> CRM · Sales</a>
+    <a class="nav-item on" href="leads-admin.html"><span class="ic">◎</span> Lead Pool</a>
+    <div class="nav-grp">Manage</div>
+    <a class="nav-item" href="#"><span class="ic">⌂</span> Organizations</a>
+    <a class="nav-item" href="#"><span class="ic">⊞</span> Service Categories</a>
+    <a class="nav-item" href="#"><span class="ic">▤</span> SOP Library</a>
+    <a class="nav-item" href="payouts.html"><span class="ic">⎙</span> Payouts</a>
+    <div class="spacer"></div>
+    <a class="nav-item" href="index.html"><span class="ic">◳</span> Wireframes</a>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="title">Lead Pool</div>
+      <div class="right"><div class="avatar">AN</div></div>
+    </header>
+
+    <div class="content">
+      <div class="pagehead">
+        <div><div class="ph-sub">Platform data asset</div><h1>Lead Pool</h1></div>
+        <div class="row">
+          <button class="btn">Match rules</button>
+          <button class="btn primary">＋ Import leads</button>
+        </div>
+      </div>
+
+      <div class="statgrid" style="margin-bottom:18px">
+        <div class="stat"><div class="l">Total leads</div><div class="n">48.250</div><div class="d muted">across 12 categories</div></div>
+        <div class="stat"><div class="l">Curated</div><div class="n">41.900</div><div class="d muted">imported / partnered</div></div>
+        <div class="stat"><div class="l">Field-sourced</div><div class="n">6.350</div><div class="d" style="color:var(--ok)">▲ added by reps</div></div>
+        <div class="stat"><div class="l">Do-not-contact</div><div class="n">512</div><div class="d muted">excluded from matching</div></div>
+      </div>
+
+      <div class="banner" style="margin-bottom:18px">
+        <span style="font-size:18px">◎</span>
+        <div style="font-size:12.5px"><b>Matching</b> uses category↔product + region + freshness. No locking — a lead can serve several projects; reps see a "last contacted" hint.</div>
+      </div>
+
+      <div class="toolbar">
+        <input class="f" style="width:240px" placeholder="Search merchant…"/>
+        <select class="f" style="width:170px"><option>All categories</option><option>F&amp;B / Resto</option><option>Retail UMKM</option><option>Pulsa / Counter</option></select>
+        <select class="f" style="width:150px"><option>All regions</option><option>Jabodetabek</option><option>Bandung</option></select>
+        <select class="f" style="width:140px"><option>All sources</option><option>Curated</option><option>Field</option></select>
+        <select class="f" style="width:140px"><option>Active</option><option>Do-not-contact</option></select>
+      </div>
+
+      <div class="card">
+        <table class="tbl">
+          <thead><tr><th>Merchant</th><th>Category</th><th>Region</th><th>Contact</th><th>Source</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>Warung Bu Sri</b><div class="muted" style="font-size:12px">Jl. Margonda, Depok</div></td>
+              <td>F&amp;B / Resto</td><td>Jabodetabek</td>
+              <td class="mono">0812-•••-4421</td>
+              <td><span class="pill neutral">Curated</span></td>
+              <td><span class="pill ok">Active</span></td>
+              <td><button class="btn sm">Edit</button></td>
+            </tr>
+            <tr>
+              <td><b>Toko Makmur Jaya</b><div class="muted" style="font-size:12px">Jl. Ir. H. Juanda, Tangsel</div></td>
+              <td>Retail UMKM</td><td>Jabodetabek</td>
+              <td class="mono">0856-•••-1190</td>
+              <td><span class="pill brand">Field</span></td>
+              <td><span class="pill ok">Active</span></td>
+              <td><button class="btn sm">Edit</button></td>
+            </tr>
+            <tr>
+              <td><b>Counter Pulsa 88</b><div class="muted" style="font-size:12px">Pasar Minggu, Jakarta</div></td>
+              <td>Pulsa / Counter</td><td>Jabodetabek</td>
+              <td class="mono">0813-•••-7732</td>
+              <td><span class="pill neutral">Curated</span></td>
+              <td><span class="pill bad">Do-not-contact</span></td>
+              <td><button class="btn sm">Edit</button></td>
+            </tr>
+            <tr>
+              <td><b>Kopi Senja</b><div class="muted" style="font-size:12px">Cihampelas, Bandung</div></td>
+              <td>F&amp;B / Resto</td><td>Bandung</td>
+              <td class="mono">0878-•••-2055</td>
+              <td><span class="pill brand">Field</span></td>
+              <td><span class="pill ok">Active</span></td>
+              <td><button class="btn sm">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination">
+          <label class="perpage">Rows per page
+            <select class="f"><option>20</option><option>50</option><option>100</option></select>
+          </label>
+          <div class="pgnav"><button class="btn sm">Previous</button><span class="muted" style="font-size:13px">Page 1 of 2.413</span><button class="btn sm">Next</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

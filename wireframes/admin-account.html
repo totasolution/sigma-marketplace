@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Account — Sigma (Admin CRM)</title>
+<link rel="stylesheet" href="css/tokens.css"/>
+<link rel="stylesheet" href="css/components.css"/>
+<style>
+  .tl{position:relative;margin:4px 0 0;padding-left:16px;border-left:2px solid var(--line)}
+  .tl .ev{position:relative;padding:0 0 16px 14px}
+  .tl .ev::before{content:"";position:absolute;left:-7px;top:3px;width:10px;height:10px;border-radius:50%;background:var(--brand);border:2px solid var(--surface)}
+  .tl .ev .w{font-size:11px;color:var(--faint)}
+  .tl .ev .t{font-size:13px;color:var(--ink);font-weight:600;margin-top:1px}
+  .tl .ev .d{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo"><span class="mark">◧</span> Sigma Admin</div>
+    <div class="nav-grp">Overview</div>
+    <a class="nav-item" href="#"><span class="ic">▦</span> Dashboard</a>
+    <a class="nav-item on" href="admin-crm.html"><span class="ic">◵</span> CRM · Sales</a>
+    <a class="nav-item" href="#"><span class="ic">⊕</span> Worker Heatmap</a>
+    <div class="nav-grp">Manage</div>
+    <a class="nav-item" href="#"><span class="ic">⌂</span> Organizations</a>
+    <a class="nav-item" href="#"><span class="ic">⊞</span> Service Categories</a>
+    <a class="nav-item" href="#"><span class="ic">▤</span> SOP Library</a>
+    <a class="nav-item" href="payouts.html"><span class="ic">⎙</span> Payouts</a>
+    <div class="spacer"></div>
+    <a class="nav-item" href="index.html"><span class="ic">◳</span> Wireframes</a>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="title">PT. Telkom Indonesia</div>
+      <div class="right"><div class="avatar">AN</div></div>
+    </header>
+
+    <div class="content">
+      <div class="crumbs"><a href="admin-crm.html">CRM · Sales</a> / PT. Telkom Indonesia</div>
+      <div class="pagehead">
+        <div><div class="ph-sub">Client account · since Jan 2026</div><h1>PT. Telkom Indonesia</h1></div>
+        <div class="row">
+          <span class="pill ok">Active</span>
+          <button class="btn">Log activity</button>
+          <button class="btn primary">Edit</button>
+        </div>
+      </div>
+
+      <div class="statgrid" style="margin-bottom:18px">
+        <div class="stat"><div class="l">GMV (QTD)</div><div class="n">Rp 0,88 M</div><div class="d" style="color:var(--ok)">▲ 24% QoQ</div></div>
+        <div class="stat"><div class="l">Lifetime GMV</div><div class="n">Rp 3,10 M</div><div class="d muted">6 months</div></div>
+        <div class="stat"><div class="l">Active projects</div><div class="n">7</div><div class="d muted">across 4 vendors</div></div>
+        <div class="stat"><div class="l">Health</div><div class="n">82</div><div class="d" style="color:var(--ok)">healthy</div></div>
+      </div>
+
+      <div class="grid-2">
+        <!-- LEFT -->
+        <div class="stack">
+          <div class="card">
+            <div class="chd"><h3>GMV by month</h3><span class="pill brand">6 months</span></div>
+            <div class="cbd">
+              <div class="chart">
+                <div class="col"><div class="v" style="height:44%"></div><div class="x">Jan</div></div>
+                <div class="col"><div class="v" style="height:58%"></div><div class="x">Feb</div></div>
+                <div class="col"><div class="v" style="height:52%"></div><div class="x">Mar</div></div>
+                <div class="col"><div class="v" style="height:70%"></div><div class="x">Apr</div></div>
+                <div class="col"><div class="v" style="height:82%"></div><div class="x">May</div></div>
+                <div class="col"><div class="v" style="height:95%"></div><div class="x">Jun</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="chd"><h3>Projects</h3><a class="btn sm" href="client-projects.html">All</a></div>
+            <table class="tbl">
+              <thead><tr><th>Project</th><th>Model</th><th>Status</th><th>GMV</th></tr></thead>
+              <tbody>
+                <tr><td><b>TV Sales — Jabodetabek</b></td><td><span class="pill brand">Per-unit</span></td><td><span class="pill ok">Active</span></td><td class="mono">Rp 0,42 M</td></tr>
+                <tr><td><b>NOC Engineer — placed</b></td><td><span class="pill info">Retainer</span></td><td><span class="pill ok">Active</span></td><td class="mono">Rp 0,16 M</td></tr>
+                <tr><td><b>Fiber survey — Depok</b></td><td><span class="pill plan">Milestone</span></td><td><span class="pill ok">Active</span></td><td class="mono">Rp 0,14 M</td></tr>
+                <tr><td><b>LAN install — RS Fatmawati</b></td><td><span class="pill warn">Flat</span></td><td><span class="pill neutral">Draft</span></td><td class="mono">—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="stack">
+          <div class="card"><div class="cbd">
+            <div class="sectlbl">Account</div>
+            <div class="kv" style="display:grid;gap:12px">
+              <div><div class="k">Owner (CSM)</div><div class="v">Dewi Anggraini</div></div>
+              <div><div class="k">Primary contact</div><div class="v">Rina W. · rina@telkom.co.id</div></div>
+              <div><div class="k">Stage</div><div class="v">Active · renewal Dec 2026</div></div>
+              <div><div class="k">Vendors engaged</div><div class="v">Sigma Teknik, NetPro, FastFix +1</div></div>
+            </div>
+          </div></div>
+
+          <div class="card"><div class="chd"><h3>Activity</h3><a class="btn sm" href="#">＋ Log</a></div><div class="cbd">
+            <div class="tl">
+              <div class="ev"><div class="w">2h ago</div><div class="t">📈 Sales spike — TV Sales</div><div class="d">+38 units vs prior week</div></div>
+              <div class="ev"><div class="w">3d ago · call</div><div class="t">QBR with Rina</div><div class="d">Wants to add 2 more vendors next quarter.</div></div>
+              <div class="ev"><div class="w">2w ago · email</div><div class="t">Sent payout reconciliation</div><div class="d">June statements approved.</div></div>
+              <div class="ev"><div class="w">Jan 2026</div><div class="t">🎉 Onboarded</div><div class="d">First project live.</div></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top:16px">CRM data (stage, health, CSM, activity) is platform-internal. Account GMV is aggregated from confirmed outcomes across the client's projects.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

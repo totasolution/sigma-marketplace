@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Workers — Sigma (Vendor)</title>
+<link rel="stylesheet" href="css/tokens.css"/>
+<link rel="stylesheet" href="css/components.css"/>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo"><span class="mark">◧</span> Sigma Teknik</div>
+    <div class="nav-grp">Main</div>
+    <a class="nav-item" href="#"><span class="ic">▦</span> Dashboard</a>
+    <a class="nav-item" href="#"><span class="ic">☷</span> Projects</a>
+    <a class="nav-item" href="vendor-report.html"><span class="ic">＋</span> Report outcome</a>
+    <div class="nav-grp">Manage</div>
+    <a class="nav-item on" href="workers.html"><span class="ic">⌗</span> Workers</a>
+    <a class="nav-item" href="payouts.html"><span class="ic">⎙</span> Payouts</a>
+    <div class="spacer"></div>
+    <a class="nav-item" href="index.html"><span class="ic">◳</span> Wireframes</a>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="title">Workers</div>
+      <div class="right"><div class="avatar">AP</div></div>
+    </header>
+
+    <div class="content">
+      <div class="pagehead">
+        <div><div class="ph-sub">Roster · vendor-internal</div><h1>Workers</h1></div>
+        <a class="btn primary" href="#">＋ Invite worker</a>
+      </div>
+
+      <div class="statgrid" style="margin-bottom:18px">
+        <div class="stat"><div class="l">Workers</div><div class="n">15</div><div class="d muted">all employees</div></div>
+        <div class="stat"><div class="l">Available</div><div class="n">9</div><div class="d" style="color:var(--ok)">ready for work</div></div>
+        <div class="stat"><div class="l">Limited</div><div class="n">2</div><div class="d muted">partly busy</div></div>
+        <div class="stat"><div class="l">On leave</div><div class="n">1</div><div class="d muted">excluded</div></div>
+      </div>
+
+      <div class="toolbar">
+        <input class="f" style="width:240px" placeholder="Search worker…"/>
+        <select class="f" style="width:180px"><option>All skills</option><option>Outlet Sales</option><option>LAN Installation</option><option>Fiber Optic</option></select>
+        <select class="f" style="width:150px"><option>All availability</option><option>Available</option><option>Limited</option><option>On leave</option></select>
+      </div>
+
+      <div class="card">
+        <table class="tbl">
+          <thead><tr><th>Worker</th><th>Skills</th><th>Availability</th><th></th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>Budi Santoso</b><div class="muted" style="font-size:12px">Jakarta · Rp350k/day</div></td>
+              <td><span class="chip">Outlet Sales</span> <span class="chip">LAN</span></td>
+              <td><span class="pill ok">Available</span></td>
+              <td><button class="btn sm">Edit</button></td>
+            </tr>
+            <tr>
+              <td><b>Agus Hermawan</b><div class="muted" style="font-size:12px">Depok · Rp350k/day</div></td>
+              <td><span class="chip">Outlet Sales</span></td>
+              <td><span class="pill ok">Available</span></td>
+              <td><button class="btn sm">Edit</button></td>
+            </tr>
+            <tr>
+              <td><b>Hadi Pratama</b><div class="muted" style="font-size:12px">Tangerang · placed (retainer)</div></td>
+              <td><span class="chip">BTS Maintenance</span></td>
+              <td><span class="pill neutral">Limited</span></td>
+              <td><button class="btn sm">Edit</button></td>
+            </tr>
+            <tr>
+              <td><b>Reza Maulana</b><div class="muted" style="font-size:12px">Bekasi · Rp400k/day</div></td>
+              <td><span class="chip">Fiber Optic</span> <span class="chip">LAN</span></td>
+              <td><span class="pill bad">On leave</span></td>
+              <td><button class="btn sm">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination">
+          <label class="perpage">Rows per page
+            <select class="f"><option>10</option><option>20</option><option>50</option><option>100</option></select>
+          </label>
+          <div class="pgnav"><button class="btn sm">Previous</button><span class="muted" style="font-size:13px">Page 1 of 2</span><button class="btn sm">Next</button></div>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top:16px">Worker records are <b>vendor-internal</b> — clients never see them, and they are not linked to platform projects or payouts. You schedule and pay workers yourself.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,7 +1,8 @@
 # Grand Design — Sigma Marketplace
 
-**Version:** 1.0  
-**Date:** 2026-05-19
+**Version:** 1.1  
+**Date:** 2026-06-30  
+**Note:** updated for the v2.0 Projects model — see [PROJECTS_DESIGN.md](PROJECTS_DESIGN.md).
 
 ---
 
@@ -54,10 +55,14 @@ sigma-api/
 │   ├── auth/            # JWT issue/validate, refresh tokens
 │   ├── organization/    # org & user management
 │   ├── sop/             # SOP templates, steps, versioning
-│   ├── job/             # job orders, assignment
+│   ├── project/         # projects, agreements, milestones, worker assignment (v2.0)
+│   ├── outcome/         # outcome reporting, verification, disputes (v2.0)
+│   ├── worker/          # worker profiles, skills, capacity (v2.0)
+│   ├── job/             # legacy job orders — adapter over project/outcome during migration
 │   ├── sync/            # WatermelonDB sync protocol endpoints
 │   ├── photo/           # R2 presigned URL generation
-│   ├── payout/          # earnings calculation, reports
+│   ├── payout/          # accruals, statements, reports (v2.0)
+│   ├── scheduler/       # auto-confirm, retainer generation, statement roll-up (v2.0)
 │   └── notification/    # push dispatch, delivery tracking
 ├── pkg/
 │   ├── middleware/      # JWT auth, rate limit, CORS
@@ -186,29 +191,25 @@ Worker (Mobile — No Internet)
        │── Delete uploaded photos from device filesystem
 ```
 
-### 3.3 Payout Calculation Flow
+### 3.3 Payout Accrual Flow (v2.0)
 
 ```
-Job marked COMPLETE
+Outcome reported (sale/visit/milestone/flat)         Retainer period (scheduler)
+       │  +evidence                                          │ auto-generated
+       ▼                                                     ▼ auto-confirmed
+Verification: client monitors; dispute = exception          │
+       │  auto-confirm after audit_window_days               │
+       ▼                                                     │
+Outcome CONFIRMED ◄──────────────────────────────────────────┘
+       │  amount = pricing rule (unit_rate×qty | retainer | flat | milestone.amount)
+       ▼
+payout_accrual { project, outcome, worker, period, amount }
+       │  (period close, scheduler)
+       ▼
+payout_statement per (vendor, worker, period)   status: pending
        │
        ▼
-Go API: calculate payout
-  for each step_completion:
-    amount = sop_step.payout_rate (locked at job assignment)
-    total  = sum(all step amounts)
-       │
-       ▼
-Write to payouts table
-  { job_id, worker_id, amount, period, status: "pending" }
-       │
-       ▼
-Client Admin exports CSV / views report
-       │
-       ▼
-Manual bank transfer (MVP)
-       │
-       ▼
-Admin marks payout status: "paid"
+Client/Admin: export CSV · approve · mark paid (manual transfer, MVP)
 ```
 
 ---
@@ -253,8 +254,12 @@ POST /sync/push?lastPulledAt=<unix_timestamp>
 Body:
 {
   "changes": {
+    "outcomes": {
+      "created": [ { id, project_id, type, quantity, occurred_at, evidence_keys } ],
+      "updated": [], "deleted": []
+    },
     "step_completions": {
-      "created": [ { id, job_order_id, sop_step_id, completed_at, note, photo_key } ],
+      "created": [ { id, outcome_id, sop_step_id, completed_at, note, photo_key } ],
       "updated": [],
       "deleted": []
     }
@@ -269,10 +274,11 @@ Response 409: { "error": "conflict", "conflicts": [...] }
 
 | Entity | Winner | Rationale |
 |---|---|---|
-| job_orders | Server | Client/admin controls assignment |
+| projects / pricing | Server | Client/admin controls the engagement |
 | sop_steps | Server | Read-only on device |
 | step_completions | Device | Worker is source of truth |
-| job status: COMPLETE | Most advanced | Cannot regress a completed job |
+| outcomes (worker-reported) | Device | Worker is source of truth |
+| outcome status: CONFIRMED | Most advanced | Cannot regress a confirmed/paid outcome |
 
 ---
 
@@ -284,9 +290,12 @@ All tables include `organization_id`. Enforced at two levels:
 2. **PostgreSQL RLS** — Row Level Security policies as defense-in-depth
 
 ```sql
--- Example RLS policy
-CREATE POLICY org_isolation ON job_orders
-  USING (organization_id = current_setting('app.organization_id')::uuid);
+-- Example RLS policy (a project is visible to its client or any participating vendor)
+CREATE POLICY org_isolation ON projects
+  USING (client_org_id = current_setting('app.organization_id')::uuid
+      OR id IN (SELECT project_id FROM project_vendors
+                WHERE vendor_org_id = current_setting('app.organization_id')::uuid));
+-- worker_profiles / worker_skills: vendor-only (clients excluded) — see PROJECTS_DESIGN §8.1.
 ```
 
 Super Admin role bypasses RLS via a separate DB role.

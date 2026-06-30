@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projects — Sigma (Client)</title>
+<link rel="stylesheet" href="css/tokens.css"/>
+<link rel="stylesheet" href="css/components.css"/>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo"><span class="mark">◧</span> PT. Telkom</div>
+    <div class="nav-grp">Main</div>
+    <a class="nav-item" href="#"><span class="ic">▦</span> Dashboard</a>
+    <a class="nav-item on" href="client-projects.html"><span class="ic">☷</span> Projects</a>
+    <a class="nav-item" href="payouts.html"><span class="ic">⎙</span> Payouts</a>
+    <a class="nav-item" href="#"><span class="ic">◷</span> Vendors</a>
+    <div class="spacer"></div>
+    <a class="nav-item" href="index.html"><span class="ic">◳</span> Wireframes</a>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="title">Projects</div>
+      <div class="right"><div class="avatar">RW</div></div>
+    </header>
+
+    <div class="content">
+      <div class="pagehead">
+        <div><div class="ph-sub">Directory</div><h1>Projects</h1></div>
+        <div class="row">
+          <button class="btn">Export</button>
+          <a class="btn primary" href="project-new.html">＋ New project</a>
+        </div>
+      </div>
+
+      <div class="statgrid" style="margin-bottom:18px">
+        <div class="stat"><div class="l">Active projects</div><div class="n">7</div><div class="d muted">across 4 vendors</div></div>
+        <div class="stat"><div class="l">Outcomes this month</div><div class="n">312</div><div class="d" style="color:var(--ok)">▲ 18% vs last</div></div>
+        <div class="stat"><div class="l">Pending review</div><div class="n">5</div><div class="d muted">auto-confirm in ≤7d</div></div>
+        <div class="stat"><div class="l">Accrued payout</div><div class="n">Rp 41,2jt</div><div class="d muted">this period</div></div>
+      </div>
+
+      <div class="toolbar">
+        <input class="f" style="width:240px" placeholder="Search project, vendor…"/>
+        <select class="f" style="width:150px"><option>All models</option><option>Per-unit</option><option>Retainer</option><option>Flat</option><option>Milestone</option></select>
+        <select class="f" style="width:140px"><option>All statuses</option><option>Active</option><option>Draft</option><option>Closed</option></select>
+        <select class="f" style="width:160px"><option>All vendors</option><option>Sigma Teknik</option><option>NetPro</option></select>
+      </div>
+
+      <div class="card">
+        <table class="tbl">
+          <thead><tr>
+            <th>Project</th><th>Pricing</th><th>Vendors</th><th>Outcomes</th><th>Accrued</th><th>Status</th><th></th>
+          </tr></thead>
+          <tbody>
+            <tr>
+              <td><b>TV Sales — Jabodetabek</b><div class="muted" style="font-size:12px">Outlet Sales · started 12 Jun</div></td>
+              <td><span class="pill brand">Per-unit</span><div class="muted" style="font-size:12px;margin-top:3px">Rp100k / sale</div></td>
+              <td><span class="pill neutral">3 vendors</span></td>
+              <td class="mono">248</td>
+              <td class="mono">Rp 24,8jt</td>
+              <td><span class="pill ok">Active</span></td>
+              <td><a class="btn sm" href="project-monitor.html">Monitor</a></td>
+            </tr>
+            <tr>
+              <td><b>NOC Engineer — placed</b><div class="muted" style="font-size:12px">BTS Maintenance · since 1 May</div></td>
+              <td><span class="pill info">Retainer</span><div class="muted" style="font-size:12px;margin-top:3px">Rp8jt / worker / mo</div></td>
+              <td><span class="pill neutral">1 vendor</span></td>
+              <td class="mono">2 / mo</td>
+              <td class="mono">Rp 16,0jt</td>
+              <td><span class="pill ok">Active</span></td>
+              <td><a class="btn sm" href="project-monitor.html">Monitor</a></td>
+            </tr>
+            <tr>
+              <td><b>Fiber survey — Depok</b><div class="muted" style="font-size:12px">Site Survey · milestone</div></td>
+              <td><span class="pill plan">Milestone</span><div class="muted" style="font-size:12px;margin-top:3px">3 milestones</div></td>
+              <td><span class="pill neutral">2 vendors</span></td>
+              <td class="mono">2 / 3</td>
+              <td class="mono">Rp 14,0jt</td>
+              <td><span class="pill ok">Active</span></td>
+              <td><a class="btn sm" href="project-monitor.html">Monitor</a></td>
+            </tr>
+            <tr>
+              <td><b>LAN install — RS Fatmawati</b><div class="muted" style="font-size:12px">LAN Installation · one-off</div></td>
+              <td><span class="pill warn">Flat</span><div class="muted" style="font-size:12px;margin-top:3px">Rp20jt total</div></td>
+              <td><span class="pill neutral">1 vendor</span></td>
+              <td class="mono">0 / 1</td>
+              <td class="mono">—</td>
+              <td><span class="pill warn">Draft</span></td>
+              <td><a class="btn sm" href="project-new.html">Edit</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination">
+          <label class="perpage">Rows per page
+            <select class="f"><option>10</option><option>20</option><option>50</option><option>100</option></select>
+          </label>
+          <div class="pgnav">
+            <button class="btn sm">Previous</button>
+            <span class="muted" style="font-size:13px">Page 1 of 1</span>
+            <button class="btn sm">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

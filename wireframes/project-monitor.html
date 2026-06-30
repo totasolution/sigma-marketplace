@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Project Monitor — Sigma (Client)</title>
+<link rel="stylesheet" href="css/tokens.css"/>
+<link rel="stylesheet" href="css/components.css"/>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo"><span class="mark">◧</span> PT. Telkom</div>
+    <div class="nav-grp">Main</div>
+    <a class="nav-item" href="#"><span class="ic">▦</span> Dashboard</a>
+    <a class="nav-item on" href="client-projects.html"><span class="ic">☷</span> Projects</a>
+    <a class="nav-item" href="payouts.html"><span class="ic">⎙</span> Payouts</a>
+    <a class="nav-item" href="#"><span class="ic">◷</span> Vendors</a>
+    <div class="spacer"></div>
+    <a class="nav-item" href="index.html"><span class="ic">◳</span> Wireframes</a>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="title">TV Sales — Jabodetabek</div>
+      <div class="right"><div class="avatar">RW</div></div>
+    </header>
+
+    <div class="content">
+      <div class="crumbs"><a href="client-projects.html">Projects</a> / TV Sales — Jabodetabek</div>
+      <div class="tabs">
+        <a class="on" href="project-monitor.html">Monitor</a>
+        <a href="client-pipeline.html">Leads</a>
+        <a href="client-project-report.html">Sales Report</a>
+      </div>
+      <div class="pagehead">
+        <div><div class="ph-sub">Per-unit · Rp100.000 / TV · 3 vendors</div><h1>TV Sales — Jabodetabek</h1></div>
+        <div class="row">
+          <span class="pill ok">Active</span>
+          <button class="btn">Export CSV</button>
+        </div>
+      </div>
+
+      <div class="statgrid" style="margin-bottom:18px">
+        <div class="stat"><div class="l">Units sold (confirmed)</div><div class="n">231</div><div class="d" style="color:var(--ok)">▲ 18% this week</div></div>
+        <div class="stat"><div class="l">Awaiting auto-confirm</div><div class="n">17</div><div class="d muted">≤ 7 days</div></div>
+        <div class="stat"><div class="l">Disputed</div><div class="n">2</div><div class="d" style="color:var(--bad)">needs vendor action</div></div>
+        <div class="stat"><div class="l">Accrued payout</div><div class="n">Rp 24,8jt</div><div class="d muted">231 × Rp100k</div></div>
+      </div>
+
+      <div class="grid-2">
+        <!-- LEFT: outcomes feed -->
+        <div class="card">
+          <div class="chd"><h3>Outcomes</h3>
+            <select class="f" style="width:150px"><option>All statuses</option><option>Reported</option><option>Confirmed</option><option>Disputed</option></select>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>When</th><th>Vendor</th><th>Evidence</th><th>Amount</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Today 14:21</td>
+                <td><b>Sigma Teknik</b></td>
+                <td><a href="#" class="muted" style="font-size:12px">📷 receipt · SN · 📍</a></td>
+                <td class="mono">Rp 100k</td>
+                <td><span class="pill warn">Reported · 7d</span></td>
+                <td><button class="btn sm danger" title="Dispute">⚐</button></td>
+              </tr>
+              <tr>
+                <td>Today 11:05</td>
+                <td><b>NetPro</b></td>
+                <td><a href="#" class="muted" style="font-size:12px">📷 receipt · SN · 📍</a></td>
+                <td class="mono">Rp 100k</td>
+                <td><span class="pill ok">Confirmed</span></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Yest 16:40</td>
+                <td><b>FastFix</b></td>
+                <td><a href="#" class="muted" style="font-size:12px">📷 receipt · 📍</a></td>
+                <td class="mono">Rp 100k</td>
+                <td><span class="pill bad">Disputed</span></td>
+                <td><span class="muted" style="font-size:12px">vendor</span></td>
+              </tr>
+              <tr>
+                <td>Yest 09:12</td>
+                <td><b>Sigma Teknik</b></td>
+                <td><a href="#" class="muted" style="font-size:12px">📷 receipt · SN · 📍</a></td>
+                <td class="mono">Rp 100k</td>
+                <td><span class="pill ok">Confirmed</span></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="pagination">
+            <span class="muted" style="font-size:13px">Auto-confirm after 7 days unless disputed</span>
+            <div class="pgnav"><button class="btn sm">Previous</button><button class="btn sm">Next</button></div>
+          </div>
+        </div>
+
+        <!-- RIGHT: by vendor -->
+        <div class="stack">
+          <div class="card"><div class="chd"><h3>By vendor</h3></div>
+            <table class="tbl">
+              <tbody>
+                <tr><td><b>Sigma Teknik</b></td><td><div class="bar"><i style="width:62%"></i></div></td><td class="mono">143</td></tr>
+                <tr><td><b>NetPro</b></td><td><div class="bar"><i style="width:30%;background:var(--ok)"></i></div></td><td class="mono">61</td></tr>
+                <tr><td><b>FastFix</b></td><td><div class="bar"><i style="width:12%;background:var(--warn)"></i></div></td><td class="mono">27</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="note">Outcomes are attributed to the <b>vendor</b>. You monitor delivery; workers are the vendor's own (not shown).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

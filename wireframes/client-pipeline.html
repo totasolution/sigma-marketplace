@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Leads Pipeline — Sigma (Client)</title>
+<link rel="stylesheet" href="css/tokens.css"/>
+<link rel="stylesheet" href="css/components.css"/>
+<style>
+  .kan{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px}
+  .kcol{flex:1;min-width:180px;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:10px}
+  .kcol h4{margin:2px 4px 10px;font-size:12px;color:var(--muted);display:flex;justify-content:space-between;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+  .kcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:8px;box-shadow:var(--shadow)}
+  .kcard .t{font-weight:700;font-size:13px;color:var(--ink)}
+  .kcard .m{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .kcard .r{font-size:11px;color:var(--brand);font-weight:600;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo"><span class="mark">◧</span> PT. Telkom</div>
+    <div class="nav-grp">Main</div>
+    <a class="nav-item" href="#"><span class="ic">▦</span> Dashboard</a>
+    <a class="nav-item on" href="client-projects.html"><span class="ic">☷</span> Projects</a>
+    <a class="nav-item" href="payouts.html"><span class="ic">⎙</span> Payouts</a>
+    <a class="nav-item" href="#"><span class="ic">◷</span> Vendors</a>
+    <div class="spacer"></div>
+    <a class="nav-item" href="index.html"><span class="ic">◳</span> Wireframes</a>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="title">Soundbox — Leads</div>
+      <div class="right"><div class="avatar">RW</div></div>
+    </header>
+
+    <div class="content">
+      <div class="crumbs"><a href="client-projects.html">Projects</a> / Soundbox campaign / Leads</div>
+      <div class="tabs">
+        <a href="project-monitor.html">Monitor</a>
+        <a class="on" href="client-pipeline.html">Leads</a>
+        <a href="client-project-report.html">Sales Report</a>
+      </div>
+      <div class="pagehead">
+        <div><div class="ph-sub">Sales project · soundbox · Per-unit Rp75k</div><h1>Leads pipeline</h1></div>
+        <div class="row">
+          <span class="pill ok">Active · 3 vendors</span>
+          <button class="btn primary">＋ Request more leads</button>
+        </div>
+      </div>
+
+      <div class="datanote" style="margin-bottom:18px">◎ <b>180 new leads matched</b> to this project (F&amp;B + Retail UMKM, Jabodetabek). <a href="#">Review &amp; distribute →</a></div>
+
+      <!-- funnel -->
+      <div class="statgrid" style="margin-bottom:18px;grid-template-columns:repeat(5,1fr)">
+        <div class="stat"><div class="l">Assigned</div><div class="n">420</div><div class="d muted">in pool</div></div>
+        <div class="stat"><div class="l">Contacted</div><div class="n">280</div><div class="d muted">67%</div></div>
+        <div class="stat"><div class="l">Visited</div><div class="n">190</div><div class="d muted">45%</div></div>
+        <div class="stat"><div class="l">Won</div><div class="n">96</div><div class="d" style="color:var(--ok)">23% conv.</div></div>
+        <div class="stat"><div class="l">Sales value</div><div class="n">Rp 7,2jt</div><div class="d muted">96 × Rp75k</div></div>
+      </div>
+
+      <div class="card" style="margin-bottom:18px"><div class="cbd">
+        <div class="sectlbl">Conversion funnel</div>
+        <table class="tbl">
+          <tbody>
+            <tr><td style="width:90px"><b>Assigned</b></td><td><div class="bar"><i style="width:100%"></i></div></td><td class="mono">420</td></tr>
+            <tr><td><b>Contacted</b></td><td><div class="bar"><i style="width:67%"></i></div></td><td class="mono">280</td></tr>
+            <tr><td><b>Visited</b></td><td><div class="bar"><i style="width:45%;background:var(--info)"></i></div></td><td class="mono">190</td></tr>
+            <tr><td><b>Won</b></td><td><div class="bar"><i style="width:23%;background:var(--ok)"></i></div></td><td class="mono">96</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <!-- kanban -->
+      <div class="card"><div class="cbd">
+        <div class="row between" style="margin-bottom:12px">
+          <div class="sectlbl mb0">Pipeline</div>
+          <select class="f" style="width:170px"><option>All vendors</option><option>Sigma Teknik</option><option>NetPro</option></select>
+        </div>
+        <div class="kan">
+          <div class="kcol"><h4>Assigned <span>140</span></h4>
+            <div class="kcard"><div class="t">Warung Bu Sri</div><div class="m">Depok · F&amp;B</div><div class="r">▸ Sigma Teknik</div></div>
+            <div class="kcard"><div class="t">Toko Sinar</div><div class="m">Bekasi · Retail</div><div class="r">▸ Sigma Teknik</div></div>
+            <div class="kcard"><div class="t">Kios 21</div><div class="m">Bogor · Counter</div><div class="r">▸ NetPro</div></div>
+          </div>
+          <div class="kcol"><h4>Contacted <span>90</span></h4>
+            <div class="kcard"><div class="t">Toko Makmur</div><div class="m">Tangsel · Retail</div><div class="r">▸ Sigma Teknik</div></div>
+            <div class="kcard"><div class="t">Cafe Senja</div><div class="m">Jaksel · F&amp;B</div><div class="r">▸ NetPro</div></div>
+          </div>
+          <div class="kcol"><h4>Visited <span>94</span></h4>
+            <div class="kcard"><div class="t">Resto Padang Sederhana</div><div class="m">Jakpus · F&amp;B</div><div class="r">▸ Sigma Teknik</div></div>
+          </div>
+          <div class="kcol"><h4>Won <span>96</span></h4>
+            <div class="kcard" style="border-color:color-mix(in srgb,var(--ok) 40%,var(--surface))"><div class="t">Mie Ayam Pak Budi</div><div class="m">Depok · F&amp;B</div><div class="r" style="color:var(--ok)">✓ sold · Sigma Teknik</div></div>
+          </div>
+          <div class="kcol"><h4>Lost <span>—</span></h4>
+            <div class="kcard"><div class="t">Toko Buku Andi</div><div class="m">not interested</div><div class="r" style="color:var(--bad)">✕ NetPro</div></div>
+          </div>
+        </div>
+      </div></div>
+
+      <p class="note" style="margin-top:16px">Leads are matched from the platform pool and distributed to <b>vendors</b>; each vendor's workers work them internally. No locking — a "last contacted" hint helps avoid clashes.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

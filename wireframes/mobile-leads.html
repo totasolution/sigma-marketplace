@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Worker Mobile — Leads (Sigma)</title>
+<link rel="stylesheet" href="css/tokens.css"/>
+<link rel="stylesheet" href="css/components.css"/>
+<style>
+  body{background:var(--bg)}
+  .wrap{max-width:1200px;margin:0 auto;padding:32px 26px}
+  .phones{display:flex;flex-wrap:wrap;gap:30px;align-items:flex-start}
+  .ph{width:300px}
+  .ph .cap{font-size:12px;color:var(--muted);text-align:center;margin-top:10px;font-weight:600}
+  .phone{height:620px;border:10px solid #111827;border-radius:36px;background:var(--surface);overflow:hidden;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;position:relative}
+  .notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:20px;background:#111827;border-radius:0 0 12px 12px;z-index:3}
+  .mtop{padding:26px 16px 12px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;background:var(--surface)}
+  .mtop .h{font-weight:800;color:var(--ink);font-size:16px}.mtop .sub{font-size:11px;color:var(--muted)}
+  .back{font-size:18px;color:var(--muted)}
+  .mbody{flex:1;overflow:auto;padding:14px}
+  .tabs{height:58px;border-top:1px solid var(--line);display:flex;background:var(--surface)}
+  .tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:10px;color:var(--faint)}.tab.on{color:var(--brand)}.tab .i{font-size:17px}
+  .off{display:flex;align-items:center;gap:7px;background:var(--warn-soft);color:var(--warn);border:1px solid color-mix(in srgb,var(--warn) 30%,var(--surface));border-radius:10px;padding:8px 11px;font-size:12px;font-weight:600;margin-bottom:12px}
+  .li{display:block;border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px;background:var(--surface);text-decoration:none;color:inherit}
+  .li .t{font-weight:700;color:var(--ink);font-size:14px}.li .m{font-size:12px;color:var(--muted);margin-top:2px}
+  .hint{font-size:11px;color:var(--warn);font-weight:600;margin-top:6px}
+  .map{height:150px;border-radius:12px;background:
+     linear-gradient(0deg,transparent 49%,color-mix(in srgb,var(--muted) 18%,var(--surface)) 50%,transparent 51%) 0 0/100% 26px,
+     linear-gradient(90deg,transparent 49%,color-mix(in srgb,var(--muted) 18%,var(--surface)) 50%,transparent 51%) 0 0/26px 100%,
+     var(--surface-2);border:1px solid var(--line);position:relative;margin-bottom:12px}
+  .pin{position:absolute;font-size:18px}
+  .cta{display:block;width:100%;text-align:center;background:var(--brand);color:#fff;border:none;border-radius:12px;padding:14px;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none}
+  .cta.ghost{background:var(--surface);color:var(--brand);border:1px solid var(--brand)}
+  .lbl{font-size:12px;font-weight:700;color:var(--label);margin:14px 0 6px}
+  .inp{width:100%;border:1px solid var(--line);border-radius:11px;padding:12px;font-size:14px;background:var(--surface);color:var(--ink);box-sizing:border-box}
+  .cam{border:1px dashed color-mix(in srgb,var(--muted) 40%,var(--surface));border-radius:12px;padding:20px;text-align:center;color:var(--muted);font-size:13px}
+  .gps{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ok);font-weight:600;margin-top:8px}
+  .seg{display:flex;gap:8px;margin-top:4px}
+  .seg button{flex:1;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px;font-size:13px;font-weight:700;color:var(--muted)}
+  .seg button.won{border-color:var(--ok);color:var(--ok)} .seg button.lost{border-color:var(--bad);color:var(--bad)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="pagehead">
+    <div><div class="ph-sub">Sigma Marketplace</div><h1>Worker Mobile — Leads</h1></div>
+    <a class="btn" href="index.html">← All wireframes</a>
+  </div>
+  <p class="muted" style="margin-top:-8px;max-width:640px">Reps get a matched, mapped lead list per sales project — work it, log visits with evidence, add new merchants in the field. Offline-first.</p>
+
+  <div class="phones" style="margin-top:24px">
+
+    <!-- 1. MY LEADS -->
+    <div class="ph">
+      <div class="phone"><div class="notch"></div>
+        <div class="mtop"><div><div class="h">My leads</div><div class="sub">Soundbox · 38 assigned</div></div><div style="margin-left:auto" class="avatar">BS</div></div>
+        <div class="mbody">
+          <div class="off">⚡ Offline — changes sync later</div>
+          <a class="li" href="#">
+            <div class="row between"><span class="t">Warung Bu Sri</span><span class="pill neutral">Assigned</span></div>
+            <div class="m">F&amp;B · 0,4 km · Jl. Margonda</div>
+          </a>
+          <a class="li" href="#">
+            <div class="row between"><span class="t">Toko Makmur Jaya</span><span class="pill warn">Contacted</span></div>
+            <div class="m">Retail · 1,1 km · Tangsel</div>
+            <div class="hint">⚐ visited 3d ago by another rep</div>
+          </a>
+          <a class="li" href="#">
+            <div class="row between"><span class="t">Mie Ayam Pak Budi</span><span class="pill ok">Won</span></div>
+            <div class="m">F&amp;B · 1,8 km · sold today</div>
+          </a>
+          <a class="li" href="#">
+            <div class="row between"><span class="t">Counter Pulsa 88</span><span class="pill neutral">Assigned</span></div>
+            <div class="m">Counter · 2,2 km · Pasar Minggu</div>
+          </a>
+        </div>
+        <div class="tabs"><div class="tab on"><span class="i">◎</span>Leads</div><div class="tab"><span class="i">☷</span>Work</div><div class="tab"><span class="i">⎙</span>Earnings</div></div>
+      </div>
+      <div class="cap">1 · My leads (worklist)</div>
+    </div>
+
+    <!-- 2. MAP -->
+    <div class="ph">
+      <div class="phone"><div class="notch"></div>
+        <div class="mtop"><span class="back">‹</span><div><div class="h">Nearby</div><div class="sub">38 leads · within 3 km</div></div></div>
+        <div class="mbody">
+          <div class="map" style="height:auto;flex:1;min-height:380px">
+            <span class="pin" style="top:60px;left:80px">📍</span>
+            <span class="pin" style="top:130px;left:180px">📍</span>
+            <span class="pin" style="top:210px;left:110px">📍</span>
+            <span class="pin" style="top:280px;left:200px">📍</span>
+            <span class="pin" style="top:170px;left:60px;font-size:22px">🧭</span>
+          </div>
+          <a class="li" href="#" style="margin-bottom:0">
+            <div class="row between"><span class="t">Warung Bu Sri</span><span class="pill neutral">0,4 km</span></div>
+            <div class="m">F&amp;B · nearest unworked</div>
+          </a>
+          <a class="cta" href="#" style="margin-top:10px">Navigate</a>
+        </div>
+      </div>
+      <div class="cap">2 · Map view</div>
+    </div>
+
+    <!-- 3. LEAD DETAIL + LOG VISIT -->
+    <div class="ph">
+      <div class="phone"><div class="notch"></div>
+        <div class="mtop"><span class="back">‹</span><div><div class="h">Warung Bu Sri</div><div class="sub">F&amp;B · Jl. Margonda, Depok</div></div></div>
+        <div class="mbody">
+          <div class="row" style="gap:8px">
+            <a class="cta ghost" href="#" style="margin-top:0">📞 Call</a>
+            <a class="cta ghost" href="#" style="margin-top:0">🧭 Route</a>
+          </div>
+          <div class="lbl">Log visit — outcome</div>
+          <div class="seg"><button class="won">Won</button><button>Revisit</button><button class="lost">Lost</button></div>
+          <div class="lbl">Evidence (if won)</div>
+          <div class="cam">📷 Capture install / receipt</div>
+          <div class="gps">📍 GPS auto-tagged</div>
+          <div class="lbl">Note</div>
+          <input class="inp" placeholder="Owner interested, follow up Fri…"/>
+          <a class="cta" href="#" style="margin-top:16px">Save visit</a>
+          <p class="muted" style="font-size:11.5px;text-align:center;margin-top:10px">"Won" creates a sale outcome (Phase 2) → Rp75k to your vendor.</p>
+        </div>
+      </div>
+      <div class="cap">3 · Lead detail · log visit</div>
+    </div>
+
+    <!-- 4. ADD FIELD LEAD -->
+    <div class="ph">
+      <div class="phone"><div class="notch"></div>
+        <div class="mtop"><span class="back">✕</span><div><div class="h">Add lead</div><div class="sub">Found a new merchant</div></div></div>
+        <div class="mbody">
+          <div class="lbl">Merchant name *</div><input class="inp" placeholder="e.g. Kopi Senja"/>
+          <div class="lbl">Category</div>
+          <select class="inp"><option>F&amp;B / Resto</option><option>Retail UMKM</option><option>Pulsa / Counter</option></select>
+          <div class="lbl">Photo (storefront)</div><div class="cam">📷 Capture</div>
+          <div class="gps">📍 Location auto-tagged · −6.40, 106.81</div>
+          <div class="lbl">Phone (optional)</div><input class="inp" placeholder="08••-••••-••••"/>
+          <a class="cta" href="#" style="margin-top:16px">Add to my leads</a>
+          <p class="muted" style="font-size:11.5px;text-align:center;margin-top:10px">Added to the pool (source: field) and reusable across projects.</p>
+        </div>
+      </div>
+      <div class="cap">4 · Add field lead</div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

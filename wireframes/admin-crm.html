@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CRM · Sales Analytics — Sigma (Admin)</title>
+<link rel="stylesheet" href="css/tokens.css"/>
+<link rel="stylesheet" href="css/components.css"/>
+<style>
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--surface-2);padding:3px}
+  .seg button{border:none;background:transparent;font-size:12px;font-weight:600;color:var(--muted);padding:6px 12px;border-radius:var(--r-pill);cursor:pointer}
+  .seg button.on{background:var(--brand);color:#fff}
+  .donut{width:120px;height:120px;border-radius:50%;
+    background:conic-gradient(var(--brand) 0 52%, var(--ok) 52% 78%, var(--warn) 78% 92%, color-mix(in srgb,var(--muted) 30%,var(--surface)) 92% 100%);
+    display:grid;place-items:center}
+  .donut .hole{width:74px;height:74px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-weight:800;color:var(--ink);font-size:15px}
+  .lg{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);margin:5px 0}
+  .dot{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo"><span class="mark">◧</span> Sigma Admin</div>
+    <div class="nav-grp">Overview</div>
+    <a class="nav-item" href="#"><span class="ic">▦</span> Dashboard</a>
+    <a class="nav-item on" href="admin-crm.html"><span class="ic">◵</span> CRM · Sales</a>
+    <a class="nav-item" href="#"><span class="ic">⊕</span> Worker Heatmap</a>
+    <div class="nav-grp">Manage</div>
+    <a class="nav-item" href="#"><span class="ic">⌂</span> Organizations</a>
+    <a class="nav-item" href="#"><span class="ic">⊞</span> Service Categories</a>
+    <a class="nav-item" href="#"><span class="ic">▤</span> SOP Library</a>
+    <a class="nav-item" href="payouts.html"><span class="ic">⎙</span> Payouts</a>
+    <div class="spacer"></div>
+    <a class="nav-item" href="index.html"><span class="ic">◳</span> Wireframes</a>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="title">CRM · Sales Analytics</div>
+      <div class="right"><div class="avatar">AN</div></div>
+    </header>
+
+    <div class="content">
+      <div class="pagehead">
+        <div><div class="ph-sub">Platform</div><h1>Sales Analytics</h1></div>
+        <div class="row">
+          <div class="seg"><button>30d</button><button class="on">QTD</button><button>YTD</button><button>All</button></div>
+          <button class="btn">Export</button>
+        </div>
+      </div>
+
+      <!-- KPI row -->
+      <div class="statgrid" style="margin-bottom:18px">
+        <div class="stat"><div class="l">GMV (sales value)</div><div class="n">Rp 2,41 M</div><div class="d" style="color:var(--ok)">▲ 22% QoQ</div></div>
+        <div class="stat"><div class="l">Units / outcomes</div><div class="n">9.842</div><div class="d" style="color:var(--ok)">▲ 18%</div></div>
+        <div class="stat"><div class="l">Platform take <span class="muted" style="font-weight:400">(2.5% · TBD)</span></div><div class="n">Rp 60,3jt</div><div class="d muted">fee model pending</div></div>
+        <div class="stat"><div class="l">Active client accounts</div><div class="n">14</div><div class="d" style="color:var(--bad)">2 at-risk</div></div>
+      </div>
+
+      <div class="grid-2">
+        <!-- LEFT: trend + category -->
+        <div class="stack">
+          <div class="card">
+            <div class="chd"><h3>GMV by week</h3><span class="pill brand">Last 8 weeks</span></div>
+            <div class="cbd">
+              <div class="chart">
+                <div class="col"><div class="v" style="height:40%"></div><div class="x">W18</div></div>
+                <div class="col"><div class="v" style="height:52%"></div><div class="x">W19</div></div>
+                <div class="col"><div class="v" style="height:48%"></div><div class="x">W20</div></div>
+                <div class="col"><div class="v" style="height:63%"></div><div class="x">W21</div></div>
+                <div class="col"><div class="v" style="height:71%"></div><div class="x">W22</div></div>
+                <div class="col"><div class="v" style="height:66%"></div><div class="x">W23</div></div>
+                <div class="col"><div class="v" style="height:84%"></div><div class="x">W24</div></div>
+                <div class="col"><div class="v" style="height:96%"></div><div class="x">W25</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="chd"><h3>By service category</h3><span class="muted" style="font-size:12px">share of GMV</span></div>
+            <table class="tbl">
+              <tbody>
+                <tr><td><b>Outlet Sales</b></td><td style="width:48%"><div class="bar"><i style="width:100%"></i></div></td><td class="mono">Rp 1,25 M</td></tr>
+                <tr><td><b>LAN Installation</b></td><td><div class="bar"><i style="width:48%;background:var(--ok)"></i></div></td><td class="mono">Rp 0,60 M</td></tr>
+                <tr><td><b>Fiber Optic</b></td><td><div class="bar"><i style="width:30%;background:var(--info)"></i></div></td><td class="mono">Rp 0,38 M</td></tr>
+                <tr><td><b>Site Survey</b></td><td><div class="bar"><i style="width:14%;background:var(--warn)"></i></div></td><td class="mono">Rp 0,18 M</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- RIGHT: pricing mix + leaderboards -->
+        <div class="stack">
+          <div class="card"><div class="chd"><h3>Pricing mix</h3></div><div class="cbd row" style="gap:18px;align-items:center">
+            <div class="donut"><div class="hole">GMV</div></div>
+            <div style="flex:1">
+              <div class="lg"><span class="dot" style="background:var(--brand)"></span> Per-unit · 52%</div>
+              <div class="lg"><span class="dot" style="background:var(--ok)"></span> Retainer · 26%</div>
+              <div class="lg"><span class="dot" style="background:var(--warn)"></span> Milestone · 14%</div>
+              <div class="lg"><span class="dot" style="background:color-mix(in srgb,var(--muted) 40%,var(--surface))"></span> Flat · 8%</div>
+            </div>
+          </div></div>
+
+          <div class="card"><div class="chd"><h3>Top vendors</h3><a class="btn sm" href="#">All</a></div>
+            <table class="tbl"><tbody>
+              <tr><td><b>Sigma Teknik</b></td><td><div class="bar"><i style="width:100%"></i></div></td><td class="mono">Rp 0,82 M</td></tr>
+              <tr><td><b>NetPro</b></td><td><div class="bar"><i style="width:64%;background:var(--ok)"></i></div></td><td class="mono">Rp 0,52 M</td></tr>
+              <tr><td><b>FastFix</b></td><td><div class="bar"><i style="width:41%;background:var(--info)"></i></div></td><td class="mono">Rp 0,34 M</td></tr>
+            </tbody></table>
+          </div>
+
+          <div class="card"><div class="chd"><h3>By region</h3></div>
+            <table class="tbl"><tbody>
+              <tr><td>Jabodetabek</td><td class="mono">Rp 1,40 M</td><td><span class="pill ok">61%</span></td></tr>
+              <tr><td>Jawa Barat</td><td class="mono">Rp 0,54 M</td><td><span class="pill neutral">22%</span></td></tr>
+              <tr><td>Jawa Timur</td><td class="mono">Rp 0,31 M</td><td><span class="pill neutral">13%</span></td></tr>
+            </tbody></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- CRM: client accounts -->
+      <div class="card" style="margin-top:18px">
+        <div class="chd"><h3>Client accounts</h3>
+          <div class="row">
+            <select class="f" style="width:150px"><option>All stages</option><option>Lead</option><option>Onboarding</option><option>Active</option><option>At-risk</option></select>
+            <input class="f" style="width:200px" placeholder="Search account…"/>
+          </div>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Account</th><th>Stage</th><th>Projects</th><th>GMV (QTD)</th><th>Trend</th><th>Last activity</th><th>Owner</th><th></th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>PT. Telkom Indonesia</b><div class="muted" style="font-size:12px">telkom · since Jan 2026</div></td>
+              <td><span class="pill ok">Active</span></td>
+              <td class="mono">7</td>
+              <td class="mono">Rp 0,88 M</td>
+              <td><span class="pill ok">▲ 24%</span></td>
+              <td class="muted" style="font-size:12px">2h ago</td>
+              <td class="muted" style="font-size:12px">Dewi (CSM)</td>
+              <td><a class="btn sm" href="admin-account.html">View</a></td>
+            </tr>
+            <tr>
+              <td><b>Bank Mandiri</b><div class="muted" style="font-size:12px">mandiri · since Mar 2026</div></td>
+              <td><span class="pill ok">Active</span></td>
+              <td class="mono">4</td>
+              <td class="mono">Rp 0,52 M</td>
+              <td><span class="pill ok">▲ 9%</span></td>
+              <td class="muted" style="font-size:12px">1d ago</td>
+              <td class="muted" style="font-size:12px">Dewi (CSM)</td>
+              <td><a class="btn sm" href="admin-account.html">View</a></td>
+            </tr>
+            <tr>
+              <td><b>Indosat Ooredoo</b><div class="muted" style="font-size:12px">indosat · since Feb 2026</div></td>
+              <td><span class="pill warn">At-risk</span></td>
+              <td class="mono">2</td>
+              <td class="mono">Rp 0,21 M</td>
+              <td><span class="pill bad">▼ 31%</span></td>
+              <td class="muted" style="font-size:12px">12d ago</td>
+              <td class="muted" style="font-size:12px">Rangga (CSM)</td>
+              <td><a class="btn sm" href="admin-account.html">View</a></td>
+            </tr>
+            <tr>
+              <td><b>XL Axiata</b><div class="muted" style="font-size:12px">xl · trial</div></td>
+              <td><span class="pill info">Onboarding</span></td>
+              <td class="mono">1</td>
+              <td class="mono">Rp 0,04 M</td>
+              <td><span class="pill neutral">new</span></td>
+              <td class="muted" style="font-size:12px">3h ago</td>
+              <td class="muted" style="font-size:12px">Rangga (CSM)</td>
+              <td><a class="btn sm" href="admin-account.html">View</a></td>
+            </tr>
+            <tr>
+              <td><b>Gojek</b><div class="muted" style="font-size:12px">— · prospect</div></td>
+              <td><span class="pill neutral">Lead</span></td>
+              <td class="mono">0</td>
+              <td class="mono">—</td>
+              <td><span class="pill neutral">—</span></td>
+              <td class="muted" style="font-size:12px">demo booked</td>
+              <td class="muted" style="font-size:12px">Dewi (CSM)</td>
+              <td><a class="btn sm" href="admin-account.html">View</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination">
+          <label class="perpage">Rows per page
+            <select class="f"><option>10</option><option>20</option><option>50</option><option>100</option></select>
+          </label>
+          <div class="pgnav"><button class="btn sm">Previous</button><span class="muted" style="font-size:13px">Page 1 of 2</span><button class="btn sm">Next</button></div>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top:16px">Sales analytics aggregate <b>confirmed outcomes</b> (GMV) across all projects. "Platform take" is illustrative — the fee model isn't defined in the PRD yet. CRM stages (Lead → Onboarding → Active → At-risk) are platform-side and not visible to clients/vendors.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

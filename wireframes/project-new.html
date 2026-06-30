@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>New Project — Sigma (Client)</title>
+<link rel="stylesheet" href="css/tokens.css"/>
+<link rel="stylesheet" href="css/components.css"/>
+<style>
+  /* wireframe-only helpers */
+  .model-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .model{border:1px solid var(--line);border-radius:12px;padding:12px 13px;cursor:pointer;background:var(--surface)}
+  .model.sel{border-color:var(--brand);background:var(--brand-soft)}
+  .model .t{font-weight:700;color:var(--ink);font-size:13.5px}
+  .model .d{font-size:12px;color:var(--muted);margin-top:3px}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo"><span class="mark">◧</span> PT. Telkom</div>
+    <div class="nav-grp">Main</div>
+    <a class="nav-item" href="#"><span class="ic">▦</span> Dashboard</a>
+    <a class="nav-item on" href="client-projects.html"><span class="ic">☷</span> Projects</a>
+    <a class="nav-item" href="payouts.html"><span class="ic">⎙</span> Payouts</a>
+    <a class="nav-item" href="#"><span class="ic">◷</span> Vendors</a>
+    <div class="spacer"></div>
+    <a class="nav-item" href="index.html"><span class="ic">◳</span> Wireframes</a>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="title">New project</div>
+      <div class="right"><div class="avatar">RW</div></div>
+    </header>
+
+    <div class="content">
+      <div class="crumbs"><a href="client-projects.html">Projects</a> / New</div>
+      <div class="pagehead">
+        <div><div class="ph-sub">Create engagement</div><h1>New project</h1></div>
+        <span class="pill warn">Draft</span>
+      </div>
+
+      <div class="grid-2">
+        <!-- LEFT: form -->
+        <div class="stack">
+          <div class="card"><div class="cbd">
+            <div class="sectlbl">Basics</div>
+            <div class="field"><label>Project title <span class="req">*</span></label>
+              <input class="f" value="TV Sales — Jabodetabek"/></div>
+            <div class="two">
+              <div class="field"><label>Service category <span class="req">*</span></label>
+                <select class="f"><option>Outlet Sales</option><option>LAN Installation</option><option>Site Survey</option></select></div>
+              <div class="field"><label>Schedule</label>
+                <input class="f" placeholder="Start – end"/></div>
+            </div>
+            <div class="field mb0"><label>Description</label>
+              <input class="f" placeholder="Scope of the engagement…"/></div>
+          </div></div>
+
+          <div class="card"><div class="cbd">
+            <div class="sectlbl">Pricing model</div>
+            <div class="model-grid">
+              <div class="model sel"><div class="t">Per-unit commission</div><div class="d">Pay per sale / outcome</div></div>
+              <div class="model"><div class="t">Recurring retainer</div><div class="d">Per placed worker / period</div></div>
+              <div class="model"><div class="t">Flat fee</div><div class="d">Fixed total on delivery</div></div>
+              <div class="model"><div class="t">Milestone</div><div class="d">Pay per deliverable</div></div>
+            </div>
+
+            <div class="dynamic" style="margin-top:14px">
+              <div class="dyntag">Per-unit parameters</div>
+              <div class="two">
+                <div class="field mb0"><label>Rate per unit (Rp) <span class="req">*</span></label>
+                  <input class="f" value="100.000"/></div>
+                <div class="field mb0"><label>Unit label</label>
+                  <input class="f" value="TV sold"/></div>
+              </div>
+              <p class="help" style="margin-bottom:0">Self-funding: each unit is client revenue. No budget cap — control is evidence + the audit window.</p>
+            </div>
+          </div></div>
+
+          <div class="card"><div class="cbd">
+            <div class="sectlbl">Vendors &nbsp;<span class="pill neutral" style="font-weight:700">many-to-many</span></div>
+            <p class="help" style="margin-top:0">Pick one or more partner vendors. Pricing above is uniform across them (v1); each vendor's workers are its own.</p>
+            <div class="chips">
+              <span class="chip sel">PT. Sigma Teknik ✓</span>
+              <span class="chip sel">NetPro Solutions ✓</span>
+              <span class="chip sel">FastFix Indonesia ✓</span>
+              <span class="chip">MitraKerja Group</span>
+            </div>
+          </div></div>
+
+          <div class="card"><div class="cbd">
+            <div class="sectlbl">Evidence rules</div>
+            <p class="help" style="margin-top:0">What a reported outcome must include. Reports missing these can't be submitted.</p>
+            <div class="row" style="gap:18px">
+              <label class="check"><span class="sw on"></span> Photo required</label>
+              <label class="check"><span class="sw on"></span> GPS required</label>
+              <label class="check"><span class="sw on"></span> Serial / customer ref</label>
+            </div>
+            <div class="two" style="margin-top:14px">
+              <div class="field mb0"><label>Min photos</label><input class="f" value="1"/></div>
+              <div class="field mb0"><label>Audit window (days)</label><input class="f" value="7"/></div>
+            </div>
+          </div></div>
+
+          <div class="card"><div class="cbd">
+            <div class="sectlbl">SOP checklist <span class="muted" style="text-transform:none;font-weight:400">(optional)</span></div>
+            <div class="field mb0"><label>Attach a published SOP to each outcome</label>
+              <select class="f"><option>Outlet Sales Call (v1)</option><option>— none —</option></select></div>
+          </div></div>
+        </div>
+
+        <!-- RIGHT: summary -->
+        <div class="stack">
+          <div class="card"><div class="chd"><h3>Summary</h3></div><div class="cbd">
+            <div class="kv" style="display:grid;gap:12px">
+              <div><div class="k">Model</div><div class="v">Per-unit · Rp100.000 / TV sold</div></div>
+              <div><div class="k">Vendors</div><div class="v">3 selected</div></div>
+              <div><div class="k">Evidence</div><div class="v">Photo · GPS · Serial</div></div>
+              <div><div class="k">Audit window</div><div class="v">7 days → auto-confirm</div></div>
+            </div>
+          </div></div>
+
+          <div class="note">Workers are the vendor's own — the platform doesn't roster or pay workers. Outcomes &amp; payouts attribute to the <b>vendor</b>.</div>
+
+          <div class="form-actions">
+            <button class="btn">Save draft</button>
+            <button class="btn primary">Activate project</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

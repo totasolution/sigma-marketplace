@@ -1,0 +1,33 @@
+/* ============================================================
+   Design tokens — the single source of truth for theming.
+   A "theme" only overrides these variables; components never change.
+   ============================================================ */
+:root{
+  /* brand */
+  --brand:#4f46e5; --brand-600:#4338ca; --brand-soft:#eef2ff;
+  /* text */
+  --ink:#0f172a; --body:#1e293b; --muted:#64748b; --faint:#94a3b8; --label:#475569; --btn-ink:#334155;
+  /* surfaces */
+  --bg:#f1f5f9; --surface:#ffffff; --surface-2:#f8fafc; --line:#e2e8f0;
+  /* semantic */
+  --ok:#059669; --ok-soft:#ecfdf5; --warn:#b45309; --warn-soft:#fffbeb;
+  --bad:#b91c1c; --bad-soft:#fef2f2; --info:#2563eb; --info-soft:#eff6ff;
+  --violet:#7c3aed; --violet-soft:#f5f3ff;
+  /* radius / shadow */
+  --r-sm:8px; --r:11px; --r-lg:16px; --r-pill:999px;
+  --shadow:0 1px 2px rgba(15,23,42,.05); --shadow-lg:0 10px 30px rgba(15,23,42,.10);
+  /* spacing (4-pt) */
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:20px;--s6:24px;--s8:32px;--s10:40px;
+}
+
+/* ---- Themes (brand reskins = 3 vars; dark = surfaces + text) ---- */
+[data-theme="emerald"]{--brand:#059669;--brand-600:#047857;--brand-soft:#ecfdf5}
+[data-theme="violet"] {--brand:#7c3aed;--brand-600:#6d28d9;--brand-soft:#f5f3ff}
+[data-theme="rose"]   {--brand:#e11d48;--brand-600:#be123c;--brand-soft:#fff1f2}
+[data-theme="dark"]{
+  --bg:#0b1220; --surface:#111827; --surface-2:#0e1626;
+  --ink:#f8fafc; --body:#cbd5e1; --muted:#94a3b8; --faint:#64748b; --line:#1f2937;
+  --label:#cbd5e1; --btn-ink:#e2e8f0;
+  --brand:#818cf8; --brand-600:#6366f1; --brand-soft:#1e1b4b;
+  --shadow:0 1px 2px rgba(0,0,0,.4); --shadow-lg:0 10px 30px rgba(0,0,0,.5);
+}
